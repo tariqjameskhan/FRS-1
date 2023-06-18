@@ -1,0 +1,19 @@
+<div class="container mt-5">
+  <h1>All Companies</h1>
+  <div class="row">
+    <% @companies.each do |company| %>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title"><%= company.name %></h5>
+            <p class="card-text">
+              <strong>Address:</strong> <%= company.address %><br>
+              <strong>Email:</strong> <%= company.email_address %><br>
+              <strong>Telephone:</strong> <%= company.telephone_number %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
