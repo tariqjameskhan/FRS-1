@@ -4,6 +4,30 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+   <%= f.input :first_name,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+            <%= f.input :last_name,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+            <%= f.input :client,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+            <%= f.input :inspector,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+            <%= f.input :organisation_name,
+                        required: false,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+            <%= f.input :telephone_number,
+                        required: false,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
     <%= f.input :email, required: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -24,7 +48,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Update", class: "btn-dark text-light mb-2" %>
   </div>
 <% end %>
 
