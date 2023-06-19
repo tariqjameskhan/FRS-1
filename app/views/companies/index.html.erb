@@ -11,8 +11,10 @@
               <strong>Email:</strong> <%= company.email_address %><br>
               <strong>Telephone:</strong> <%= company.telephone_number %>
             </p>
+            <%= link_to 'Show', company_path(company), class: 'btn btn-primary' %>
           </div>
         </div>
+        <%= link_to 'New Company', new_company_path, class: 'btn btn-primary' %>
       </div>
     <% end %>
   </div>
