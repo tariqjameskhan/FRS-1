@@ -3,7 +3,11 @@ class CompanyPolicy < ApplicationPolicy
     # NOTE: Be explicit about which records you allow access to!
     def resolve
       # scope.all
-      scope.where(inspector_id: user.id)
+      if user.inspector?
+        scope.where(inspector_id: user.id)
+      elsif user.client?
+        scope.where(client_id: user.id)
+      end
       # scope.where(client_id: user.id)
     end
   end
