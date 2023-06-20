@@ -1,0 +1,44 @@
+<footer class="footer bg-light text-center">
+  <div class="container py-2">
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-2 mb-md-0">
+        <h6 class="text-uppercase">Flare Risk Inc.</h6>
+        <p class="mb-0">
+          Some description about the company.
+        </p>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-2 mb-md-0">
+        <h6 class="text-uppercase">Links</h6>
+
+        <ul class="list-unstyled mb-0">
+          <li>
+            <%= link_to 'Home', root_path %>
+          </li>
+          <li>
+            <%= link_to 'All Companies', companies_path %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-2 mb-md-0">
+        <h6 class="text-uppercase">Contact Us</h6>
+
+        <ul class="list-unstyled mb-0">
+          <li>
+            <p class="mb-0"><i class="fas fa-home mr-1"></i> London, UK</p>
+          </li>
+          <li>
+            <p class="mb-0"><i class="fas fa-envelope mr-1"></i> info@example.com</p>
+          </li>
+          <li>
+            <p class="mb-0"><i class="fas fa-phone mr-1"></i> + 44 7234 567 788</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="text-center py-1 bg-dark text-light" style="margin-bottom: 0">
+    © <%= Time.current.year %> Flare Risk Inc.
+  </div>
+</footer>
