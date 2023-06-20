@@ -3,5 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :companies
+
+  has_many :inspected_companies, class_name: 'Company', foreign_key: 'inspector_id'
+  has_many :client_companies, class_name: 'Company', foreign_key: 'client_id'
 end
