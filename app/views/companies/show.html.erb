@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <h1><%= @company.name %></h1>
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Company Details</h5>
+          <p class="card-text">
+            <strong>Address:</strong> <%= @company.address %><br>
+            <strong>Email:</strong> <%= @company.email_address %><br>
+            <strong>Telephone:</strong> <%= @company.telephone_number %>
+          </p>
+          <% if current_user == @company.user %>
+            <%= link_to 'Edit', edit_company_path(@company), class: 'btn btn-warning' %>
+            <%= link_to 'Delete', @company, method: :destroy, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= link_to 'Back to Companies', companies_path, class: 'btn btn-primary mt-3' %>
+</div>
