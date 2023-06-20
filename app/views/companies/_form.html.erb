@@ -12,12 +12,12 @@
 
   <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
   <div class="form-group">
     <%= form.label :address %>
-    <%= form.text_area :address %>
+    <%= form.text_field :address, class: "form-control"  %>
   </div>
 
   <div class="form-group">
@@ -31,12 +31,12 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :client %>
+    <%= form.label :client_email_address %>
     <%= form.text_field :email, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-dark text-light mt-3 rounded-pill"%>
   </div>
 <% end %>
 
