@@ -7,12 +7,12 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    if @company.user == current_user
-      # The user is authorized to view this company
-    else
-      # The user is not authorized to view this company
-      redirect_to root_path, alert: "You are not authorized to view this company."
-    end
+    # if @company.user_id == current_user.id
+    #   # The user is authorized to view this company
+    # else
+    #   # The user is not authorized to view this company
+    #   redirect_to root_path, alert: "You are not authorized to view this company."
+    # end
   end
 
   def new
