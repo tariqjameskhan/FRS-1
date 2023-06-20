@@ -3,10 +3,11 @@ class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   def index
-    @companies = Company.all
+    @companies = policy_scope(Company).all
   end
 
   def show
+    authorize @company
     # if @company.user_id == current_user.id
     #   # The user is authorized to view this company
     # else
