@@ -16,11 +16,11 @@ class CompanyPolicy < ApplicationPolicy
     record.inspector_id == user.id || record.client_id == user.id
   end
 
-  def new
-    return create?
-  end
-
   def create?
     return true
+  end
+
+  def new?
+    return create?
   end
 end

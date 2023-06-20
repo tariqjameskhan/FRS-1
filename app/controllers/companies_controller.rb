@@ -18,13 +18,15 @@ class CompaniesController < ApplicationController
 
   def new
     @company = Company.new
-    # authorize @company
+    authorize @company
   end
 
   def create
     @company = Company.new(company_params)
     @company.user = current_user
-    # authorize @company
+    # @company.inspector_id = current_user
+    # @company.client_id = User.where(email: params[:email])
+    authorize @company
     if @company.save
       redirect_to company_path(@company)
     else
