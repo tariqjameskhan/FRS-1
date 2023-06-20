@@ -23,10 +23,9 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
-    @company.user_id = current_user.id
     @company.inspector_id = current_user.id
     @client = User.where(client_params).first
-    @company.client_id = @client.id
+    @company.client_id = @client.id if @client.present?
     authorize @company
     if @company.save
       redirect_to company_path(@company)
