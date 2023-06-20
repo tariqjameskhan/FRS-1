@@ -23,9 +23,10 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
-    @company.user = current_user
-    # @company.inspector_id = current_user
-    # @company.client_id = User.where(email: params[:email])
+    @company.user_id = current_user.id
+    @company.inspector_id = current_user.id
+    @client = User.where(client_params).first
+    @company.client_id = @client.id
     authorize @company
     if @company.save
       redirect_to company_path(@company)
@@ -60,6 +61,10 @@ class CompaniesController < ApplicationController
 
   def company_params
     params.require(:company).permit(:name, :address, :telephone_number, :email_address)
+  end
+
+  def client_params
+    params.require(:company).permit(:email)
   end
 
   def set_company
