@@ -3,11 +3,12 @@ class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   def index
-    @companies = policy_scope(Company).all
+    @companies = policy_scope(Company)
+    @companies = Company.all
   end
 
   def show
-    authorize @company
+    authorize(@company)
     # if @company.user_id == current_user.id
     #   # The user is authorized to view this company
     # else
@@ -23,10 +24,9 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
-    @company.user_id = current_user.id
     @company.inspector_id = current_user.id
     @client = User.where(client_params).first
-    @company.client_id = @client.id
+    @company.client_id = @client.id if @client.present?
     authorize @company
     if @company.save
       redirect_to company_path(@company)
@@ -49,7 +49,7 @@ class CompaniesController < ApplicationController
   end
 
   def destroy
-    # authorize @company
+    authorize @company
     if @company.destroy
       redirect_to companies_path, status: :see_other
     else

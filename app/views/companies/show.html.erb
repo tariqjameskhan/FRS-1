@@ -10,9 +10,9 @@
             <strong>Email:</strong> <%= @company.email_address %><br>
             <strong>Telephone:</strong> <%= @company.telephone_number %>
           </p>
-          <% if current_user.id == @company.user_id %>
+          <% if current_user.id == @company.inspector_id || @company.client_id %>
             <%= link_to 'Edit', edit_company_path(@company), class: 'btn btn-warning' %>
-            <%= link_to 'Delete', @company, method: :destroy, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            <%= link_to 'Delete', @company, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
           <% end %>
         </div>
       </div>
