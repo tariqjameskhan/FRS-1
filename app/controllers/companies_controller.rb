@@ -49,7 +49,7 @@ class CompaniesController < ApplicationController
   end
 
   def destroy
-    # authorize @company
+    authorize @company
     if @company.destroy
       redirect_to companies_path, status: :see_other
     else
