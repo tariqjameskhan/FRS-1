@@ -1,23 +1,50 @@
 <div class="container mt-5">
   <h1 class="mb-3">All Companies</h1>
   <div class="row">
-    <% @companies.each do |company| %>
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card mb-4">
-          <div class="card-body">
-            <h5 class="card-title"><%= company.name %></h5>
-            <p class="card-text">
-              <strong>Address:</strong> <%= company.address %><br>
-              <strong>Email:</strong> <%= company.email_address %><br>
-              <strong>Telephone:</strong> <%= company.telephone_number %>
-            </p>
-            <%= link_to 'Show', company_path(company), class: 'btn btn-primary' %>
-          </div>
-        </div>
-      </div>
-    <% end %>
+    <table class="table table-striped mt-5">
+      <thead>
+        <tr>
+          <th scope="col">*</th>
+          <th scope="col">Company name</th>
+          <th scope="col">Company address</th>
+          <th scope="col">Email</th>
+          <th scope="col">Tel</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% num = 0 %>
+        <% @companies.sort.each do |company| %>
+          <tr>
+            <th scope="row"><%= num += 1 %></th>
+            <td><%= company.name %></td>
+            <td><%= company.address %></td>
+            <td><%= company.email_address %></td>
+            <td><%= company.telephone_number %></td>
+            <td><%= link_to 'View', company_path(company), class: "btn btn-outline-dark"%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
   <% if current_user.inspector? %>
-    <%= link_to 'New Company', new_company_path, class: 'btn btn-primary' %>
+    <%= link_to 'New Company', new_company_path, class: 'btn btn-outline-dark' %>
   <% end %>
 </div>
+<%# <div class="row"> %>
+    <%# <% @companies.each do |company| %>
+      <%# <div class="col-sm-6 col-md-4 col-lg-3"> %>
+        <%# <div class="card mb-4"> %>
+          <%# <div class="card-body"> %>
+            <%# <h5 class="card-title"><%= company.name %>
+            <%# <p class="card-text"> %>
+              <%# <strong>Address:</strong> <%= company.address %>
+              <%# <strong>Email:</strong> <%= company.email_address %>
+              <%# <strong>Telephone:</strong> <%= company.telephone_number %>
+            <%# </p> %>
+            <%# <%= link_to 'Show', company_path(company), class: 'btn btn-primary' %>
+          <%# </div> %>
+        <%# </div> %>
+      <%# </div> %>
+    <%# <% end %>
+  <%# </div> %>
