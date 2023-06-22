@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
 
   def index
     @companies = policy_scope(Company)
-    @companies = Company.all
+    # @companies = Company.all
   end
 
   def show
@@ -36,11 +36,11 @@ class CompaniesController < ApplicationController
   end
 
   def edit
-    # authorize(@company)
+    authorize(@company)
   end
 
   def update
-    # authorize(@company)
+    authorize(@company)
     if @company.update(company_params)
       redirect_to company_path(@company)
     else
