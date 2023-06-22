@@ -21,14 +21,14 @@
             <td><%= company.address %></td>
             <td><%= company.email_address %></td>
             <td><%= company.telephone_number %></td>
-            <td><%= link_to 'View', company_path(company), class: 'btn btn-primary' %></td>
+            <td><%= link_to 'View', company_path(company), class: "btn btn-outline-dark"%></td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
   <% if current_user.inspector? %>
-    <%= link_to 'New Company', new_company_path, class: 'btn btn-primary' %>
+    <%= link_to 'New Company', new_company_path, class: 'btn btn-outline-dark' %>
   <% end %>
 </div>
 <%# <div class="row"> %>
