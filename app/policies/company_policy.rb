@@ -17,10 +17,22 @@ class CompanyPolicy < ApplicationPolicy
   end
 
   def create?
-    return true
+    user.inspector?
   end
 
   def new?
     return create?
+  end
+
+  def edit?
+    user.inspector?
+  end
+
+  def update?
+    user.inspector?
+  end
+
+  def destroy?
+    user.inspector?
   end
 end
