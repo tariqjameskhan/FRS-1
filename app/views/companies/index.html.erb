@@ -14,7 +14,7 @@
       </thead>
       <tbody>
         <% num = 0 %>
-        <% @companies.each do |company| %>
+        <% @companies.sort.each do |company| %>
           <tr>
             <th scope="row"><%= num += 1 %></th>
             <td><%= company.name %></td>
