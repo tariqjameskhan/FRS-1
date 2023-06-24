@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
 
   def index
     @companies = policy_scope(Company)
-    # @companies = Company.all
+    @companies = Company.all unless @companies
   end
 
   def show
