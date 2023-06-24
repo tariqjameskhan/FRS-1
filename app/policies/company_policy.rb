@@ -2,13 +2,13 @@ class CompanyPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      # scope.all
       if user.inspector?
         scope.where(inspector_id: user.id)
       elsif user.client?
         scope.where(client_id: user.id)
+      else
+        scope.none
       end
-      # scope.where(client_id: user.id)
     end
   end
 
