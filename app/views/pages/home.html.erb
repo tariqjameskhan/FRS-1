@@ -1,3 +1,53 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<p>Find me in app/views/pages/home.html.erb</p>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.2/css/all.css">
+<div class="banner" style="position: relative;">
+  <%= image_tag "banner_tak-kei-wong-PWOV__8cRpw-unsplash.jpg", style: "width: 100%;" %>
+  <div class="container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <h1>Flare - Fire safety compliance made easy</h1>
+    <p>Manage fire safety assessments with Flare's digital solution!</p>
+    <a class="button-primary" href="/users/sign_in"><b>Sign Up!</b></a>
+  </div>
+</div>
+
+  <div class="container">
+    <br>
+    <h2 class="text-center">What you can do</h2>
+    <div class="cards">
+      <div class="card">
+        <%= image_tag"assessment.png", style: "display: block; margin: 0 auto; width: 150px;" %>
+        <h4>Risk Assessments</h4>
+        <p>Carry out risk assessments with our free app and pre-configured forms.</p>
+      </div>
+
+      <div class="card">
+        <%= image_tag"checklist.png", style: "display: block; margin: 0 auto; width: 150px;" %>
+        <h4>Easy Documentation</h4>
+        <p>Store and manage all your compliance documents in one place and make them easily accessible to your clients.</p>
+      </div>
+
+      <div class="card">
+       <%= image_tag"upload.png", style: "display: block; margin: 0 auto; width: 150px;"  %>
+        <h4>Upload Evidence</h4>
+        <p>Upload evidence yourself or let your clients upload evidence that supports their assessments.</p>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <h2 class="text-center">Why choose Flare Fire Solutions</h2>
+      <div>
+        <ul class="bullet-list">
+          <h4>
+          <li>Easy Set-Up: Flare comes With pre-configured and customized risk assessments</li>
+          <li>Share assessments with your clients instantly - no paper needed!</li>
+          <li>Let your clients upload evidence themselves</li>
+        </h4>
+        </ul>
+      </div>
+      <div class="text-center">
+        <h2>More Questions?</h2>
+        <br>
+        <a class="button-secondary" href="#"><b>Contact Us</b></a>
+        <br><br>
+        <h4>Flare is build for and by fire assessors - we know your needs!</h4>
+      </div>
+  </div>

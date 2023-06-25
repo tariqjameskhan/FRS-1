@@ -1,8 +1,22 @@
 .footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #DD851E;
-  padding: 20px;
   text-align: center;
+}
+
+.footer a {
+  font-size: 30px;
+  color: orangered;
+  ;
+}
+
+.text-center.py-1.bg-dark.text-light {
+  background-color: #DD851E!important;
+  color: white !important;
+}
+
+.footer p {
+  color: #6B6C6C;
+}
+
+.footer .fas {
+  color: orangered;
 }
