@@ -25,7 +25,7 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     @company.inspector_id = current_user.id
-    @company.user_id = current_user.id
+    # @company.user_id = current_user.id
     @client = User.where(client_params).first
     @company.client_id = @client.id if @client.present?
     authorize @company
