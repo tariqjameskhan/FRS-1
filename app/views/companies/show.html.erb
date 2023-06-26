@@ -34,7 +34,7 @@
       </thead>
       <tbody>
         <% num = 0 %>
-        <% @reports.each do |report| %>
+        <% @company.reports.each do |report| %>
           <tr>
             <th scope="row"><%= num += 1 %></th>
             <td><%= report.premises_name %></td>
