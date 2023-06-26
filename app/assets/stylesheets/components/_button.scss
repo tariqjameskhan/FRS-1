@@ -19,8 +19,20 @@
   border-radius: 50px;
   color: orangered;
 }
+
 .button-secondary:hover {
   color: red;
   text-decoration: none;
+}
 
+/* Auto layout */
+.btn {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #DD851E;
+  border: 1px solid #000000;
+  border-radius: 100px;
+  color: azure;
 }
