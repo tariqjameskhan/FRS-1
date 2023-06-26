@@ -9,4 +9,8 @@ class ReportPolicy < ApplicationPolicy
   def show?
     return true
   end
+
+  def edit?
+    return true
+  end
 end

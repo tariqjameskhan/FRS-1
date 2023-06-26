@@ -30,6 +30,7 @@
           <th scope="col">Tel</th>
           <th scope="col">Date Completed</th>
           <th scope="col"></th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -42,6 +43,7 @@
             <td><%= report.telephone_number %></td>
             <td><%= report.date_report_completed %></td>
             <td><%= link_to 'View', company_report_path(report), class: "btn btn-outline-dark"%></td>
+            <td><%= link_to 'Edit', edit_company_report_path(report), class: "btn btn-outline-dark"%></td>
           </tr>
         <% end %>
       </tbody>

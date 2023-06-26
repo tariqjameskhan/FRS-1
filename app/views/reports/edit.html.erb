@@ -1,0 +1,16 @@
+<h1>This is the edit page for <%= @report.premises_name %></h1>
+<div class="container mt-5">
+  <h1>Edit Report</h1>
+
+  <%= simple_form_for [@company, @report], html: {data: {form_target: "form"}} do |f| %>
+  <%= f.input :premises_name %>
+  <%= f.input :street_address %>
+  <%= f.input :city %>
+  <%= f.input :postcode %>
+  <%= f.input :telephone_number %>
+  <%= f.input :date_report_completed %>
+  <%= f.submit "Edit", class: "ms-1 btn btn-dark" %>
+  <% end %>
+
+  <%= link_to 'Back', company_path(@company), class: "btn btn-primary text-light mt-3 rounded-pill" %>
+</div>
