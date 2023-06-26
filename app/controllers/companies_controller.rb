@@ -9,6 +9,7 @@ class CompaniesController < ApplicationController
 
   def show
     authorize(@company)
+    @reports = Report.all
     # if @company.user_id == current_user.id
     #   # The user is authorized to view this company
     # else

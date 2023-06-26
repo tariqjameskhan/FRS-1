@@ -18,5 +18,34 @@
       </div>
     </div>
   </div>
+  <div class="container mt-5">
+  <h1 class="mb-3">Reports</h1>
+  <div class="row">
+    <table class="table table-striped mt-5">
+      <thead>
+        <tr>
+          <th scope="col">*</th>
+          <th scope="col">Premises name</th>
+          <th scope="col">Premises address</th>
+          <th scope="col">Tel</th>
+          <th scope="col">Date Completed</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% num = 0 %>
+        <% @reports.each do |report| %>
+          <tr>
+            <th scope="row"><%= num += 1 %></th>
+            <td><%= report.premises_name %></td>
+            <td><%= report.street_address %></td>
+            <td><%= report.telephone_number %></td>
+            <td><%= report.date_report_completed %></td>
+            <td><%= link_to 'View', company_report_path(report), class: "btn btn-outline-dark"%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
   <%= link_to 'Back to Companies', companies_path, class: 'btn btn-primary mt-3' %>
 </div>
