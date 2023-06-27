@@ -8,12 +8,15 @@
         <div class="row bg-light mt-3 p-3 justify-content-center">
           <%= render 'form', company: @company %>
         </div>
-        <div class="row mt-3 justify-content-between align-items-center">
-          <%= render 'shared/primary_button' do %>
-            <%= link_to 'Back', companies_path %>
-          <% end %>
-        </div>
+        <%# <div class="row mt-3 justify-content-between align-items-center"> %>
+          <%# <%= render 'shared/primary_button' do %>
+            <%# <%= link_to 'Back', companies_path %>
+          <%# <% end %>
+        <%# </div> %>
       </div>
     </div>
+  </div>
+  <div>
+    <%= link_to 'Back', companies_path, class: 'btn-big-dark' %>
   </div>
 </div>

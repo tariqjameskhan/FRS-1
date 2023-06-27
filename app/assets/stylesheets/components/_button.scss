@@ -18,7 +18,7 @@
 
 .button-secondary {
   background-color: transparent;
-  border: 1px solid ;
+  // border: 1px solid ;
   padding: 8px 16px;
   border-radius: 50px;
   color: orangered;
@@ -36,7 +36,45 @@
   justify-content: center;
   align-items: center;
   background: #DD851E;
-  border: 1px solid #000000;
+  // border: 1px solid #000000;
   border-radius: 100px;
   color: azure;
+}
+
+.btn-big {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #DD851E;
+  padding: 16px 50px;
+  // border: 1px solid #000000;
+  border: none;
+  border-radius: 100px;
+  color: azure;
+  text-decoration: none;
+}
+
+.btn-big:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.btn-big-dark {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // background: #DD851E;
+  padding: 16px 50px;
+  border: 1px solid #000000;
+  border-radius: 100px;
+  color: rgb(6, 6, 6);
+  text-decoration: none;
+}
+
+.btn-big-dark:hover {
+  background: #111110;
+  color: azure;
+  text-decoration: none;
 }

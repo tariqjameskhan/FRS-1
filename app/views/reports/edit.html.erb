@@ -9,8 +9,10 @@
   <%= f.input :postcode %>
   <%= f.input :telephone_number %>
   <%= f.input :date_report_completed %>
-  <%= f.submit "Edit", class: "btn" %>
+  <%= f.submit "Edit", class: "btn-big" %>
   <% end %>
 
-  <%= link_to 'Back', company_path(@company), class: "btn" %>
+  <div class="mt-5">
+    <%= link_to 'Back', company_path(@company), class: "btn-big-dark"%>
+  </div>
 </div>

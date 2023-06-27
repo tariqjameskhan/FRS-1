@@ -36,11 +36,13 @@
   </div>
 
   <div class="actions">
-    <%= render 'shared/primary_button' do %>
-      <%= form.submit %>
-    <% end %>
+    <%= form.submit class: "btn-big"%>
+    <%# <%= render 'shared/primary_button' do %>
+      <%# <%= form.submit %>
   </div>
 <% end %>
+
+<%# <% end %>
 
 <%# <%= simple_form_for(company) do |f| %>
   <%# <%= f.input :name %>
