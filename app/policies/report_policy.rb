@@ -13,4 +13,8 @@ class ReportPolicy < ApplicationPolicy
   def edit?
     return true
   end
+
+  def update?
+    return edit?
+  end
 end
