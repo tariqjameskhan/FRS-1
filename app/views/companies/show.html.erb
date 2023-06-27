@@ -49,7 +49,14 @@
       </tbody>
     </table>
   </div>
-  <div class="mt-4">
-    <%= link_to 'Back to Companies', companies_path, class: 'btn-big-dark' %>
+  <div class="d-flex justify-content-between mt-4">
+    <div>
+      <%= link_to 'Back to Companies', companies_path, class: 'btn-big-dark' %>
+    </div>
+    <div class="justify-content-end">
+      <% if current_user.inspector? %>
+        <%= link_to 'Create report', "#", class: 'btn-big-dark' %>
+      <% end %>
+    </div>
   </div>
 </div>
