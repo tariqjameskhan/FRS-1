@@ -1,1 +1,37 @@
 <h1>This is the reports show for <%= @report.premises_name %></h1>
+<div class="container mt-5">
+  <div class="d-inline-flex">
+    <div class="p-3">
+      <p>Date of assessment</p>
+      <p class="free-text-input"><%= @report.date_report_completed %></p>
+    </div>
+    <div class="p-3">
+      <p>Name of Assessor</p>
+      <p class="free-text-input"><%= @report.company.inspector.first_name %> <%= @report.company.inspector.last_name %></p>
+    </div>
+  </div>
+  <div class="d-inline-flex">
+    <div class="p-3">
+      <p>Street address</p>
+      <p class="free-text-input"><%= @report.street_address %></p>
+    </div>
+    <div class="p-3">
+      <p>City</p>
+      <p class="free-text-input"><%= @report.city %></p>
+    </div>
+    <div class="p-3">
+      <p>Postcode</p>
+      <p class="free-text-input"><%= @report.postcode %></p>
+    </div>
+  </div>
+  <div class="d-flex justify-content-between mt-5">
+    <div>
+      <%= link_to 'Back to Company', company_path(@report.company), class: 'btn-big-dark' %>
+    </div>
+    <div class="justify-content-end">
+      <% if current_user.inspector? %>
+        <%= link_to 'Submit', "#", class: 'btn-big-dark' %>
+      <% end %>
+    </div>
+  </div>
+</div>
