@@ -62,8 +62,12 @@
             <td><%= report.street_address %></td>
             <td><%= report.telephone_number %></td>
             <td><%= report.date_report_completed %></td>
-            <td><%= link_to 'View', company_report_path(@company, report), class: "btn"%></td>
+            <% if current_user.inspector? %>
             <td><%= link_to 'Edit', edit_company_report_path(@company, report), class: "btn"%></td>
+            <% else %>
+            <td></td>
+            <% end %>
+            <td><%= link_to 'View', company_report_path(@company, report), class: "btn"%></td>
           </tr>
         <% end %>
       </tbody>
