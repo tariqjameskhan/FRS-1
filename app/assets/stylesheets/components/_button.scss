@@ -1,9 +1,12 @@
 .button-primary {
   display: inline-block;
-  background-color: orangered;
+  background-color: #DD851E;
   padding: 16px 36px;
   border-radius: 50px;
   color: white;
+  transition: all 0.5s ease;
+  font-weight: bold;
+  font-size: 100%;
 }
 
 .button-primary:hover {
