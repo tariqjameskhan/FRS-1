@@ -1,15 +1,21 @@
-<h1>This is the reports show for <%= @report.premises_name %></h1>
 <div class="container mt-5">
-  <div class="d-inline-flex">
+  <h1>Assessment for <%= @report.premises_name %></h1>
+  <div class="d-inline-flex mt-3">
     <div class="p-3">
       <p>Date of assessment</p>
-      <p class="free-text-input"><%= @report.date_report_completed %></p>
+      <p class="free-text-input">
+      <% if  @report.date_report_completed? %>
+      <%= @report.date_report_completed %>
+      <% else %>
+      01/01/2000
+      <% end %></p>
     </div>
     <div class="p-3">
       <p>Name of Assessor</p>
       <p class="free-text-input"><%= @report.company.inspector.first_name %> <%= @report.company.inspector.last_name %></p>
     </div>
   </div>
+  <h2>Address</h2>
   <div class="d-inline-flex">
     <div class="p-3">
       <p>Street address</p>
@@ -22,6 +28,45 @@
     <div class="p-3">
       <p>Postcode</p>
       <p class="free-text-input"><%= @report.postcode %></p>
+    </div>
+  </div>
+  <h2>Photos</h2>
+  <div class="d-inline-flex">
+    <%= image_tag("https://images.unsplash.com/photo-1629815716234-9b215a12f552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80", size: 175, class: "m-4") %>
+    <%= image_tag("https://images.unsplash.com/photo-1487088678257-3a541e6e3922?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80", size: 175, class: "m-4") %>
+    <%= image_tag("https://images.unsplash.com/photo-1487088678257-3a541e6e3922?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80", size: 175, class: "m-4") %>
+  </div>
+  <h2>Construction details</h2>
+  <div class="m-3">
+    <p class="free-text-input">Some details about construction</p>
+  </div>
+   <div class="d-inline-flex">
+    <div class="p-3">
+      <p>Number of floors</p>
+      <p class="free-text-input">1</p>
+    </div>
+    <div class="p-3">
+      <p>Floor area</p>
+      <p class="free-text-input">2000m2</p>
+    </div>
+    <div class="p-3">
+      <p>Floor Plan</p>
+      <p class="free-text-input">attach file 📎</p>
+    </div>
+  </div>
+  <h2>Responsible Person</h2>
+  <div class="d-inline-flex">
+    <div class="p-3">
+      <p>Full name</p>
+      <p class="free-text-input"><%= @report.company.client.first_name %> <%= @report.company.client.last_name %></p>
+    </div>
+    <div class="p-3">
+      <p>Phone number</p>
+      <p class="free-text-input"><%= @report.company.client.telephone_number %></p>
+    </div>
+    <div class="p-3">
+      <p>Email</p>
+      <p class="free-text-input"><%= @report.company.client.email %></p>
     </div>
   </div>
   <div class="d-flex justify-content-between mt-5">
