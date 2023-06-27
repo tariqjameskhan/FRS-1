@@ -1,13 +1,14 @@
 .free-text-input {
   position: relative;
-  border: 1px solid #ccc;
+  border: 1px solid #0f0e0e;
   border-radius: 4px;
-  padding: 10px;
+  padding: 20px 50px;
   margin-bottom: 10px;
+  margin-right: 50px;
 }
 
 .free-text-input::before {
-  content: "Enter your text:";
+  // content: "Enter your text:";
   position: absolute;
   top: -16px;
   left: 10px;
@@ -20,4 +21,13 @@
 .free-text-input textarea {
   width: 100%;
   padding-right: 25px;
+}
+
+.free-text-input-big {
+  position: relative;
+  border: 1px solid #0f0e0e;
+  border-radius: 4px;
+  padding: 20px 50px;
+  margin-bottom: 10px;
+  width: 600px;
 }
