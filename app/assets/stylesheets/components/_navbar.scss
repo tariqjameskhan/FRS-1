@@ -36,3 +36,24 @@
   background-color: #DD851E;
   color: white;
 }
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .navbar-lewagon {
+    flex-direction: column;
+  }
+
+  .navbar-lewagon .navbar-collapse {
+    width: 100%;
+  }
+
+  .navbar-lewagon .navbar-brand img {
+    width: 30px;
+  }
+
+  .dropdown-menu {
+    min-width: auto;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+  }
+}
