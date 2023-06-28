@@ -30,13 +30,17 @@
       <p class="free-text-input"><%= @report.postcode %></p>
     </div>
   </div>
-  <h2>Photos</h2>
-  <div class="d-inline-flex">
-    <%= image_tag("https://images.unsplash.com/photo-1629815716234-9b215a12f552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80", size: 175, class: "m-4") %>
-    <%= image_tag("https://images.unsplash.com/photo-1487088678257-3a541e6e3922?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80", size: 175, class: "m-4") %>
-    <%= image_tag("https://images.unsplash.com/photo-1487088678257-3a541e6e3922?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80", size: 175, class: "m-4") %>
-  </div>
-  <h2>Construction details</h2>
+  <% if @report.photos.any? %>
+    <h2>Photos</h2>
+    <div class="d-inline-flex mt-1">
+      <% @report.photos.each do |photo| %>
+        <div class="m-4">
+          <%= cl_image_tag photo.key, width: 200, height: 200, crop: :fill %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <h2 class="mt-4">Construction details</h2>
   <div class="m-3">
     <p class="free-text-input">Some details about construction</p>
   </div>

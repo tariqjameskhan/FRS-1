@@ -9,32 +9,33 @@
       </ul>
     </div>
   <% end %>
+  <div class="d-inline-flex justify-content-between ms-5">
+    <div class="form-group textOnInput">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "free-text-input" %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "form-control" %>
+    <div class="form-group textOnInput">
+      <%= form.label :address %>
+      <%= form.text_field :address, class: "free-text-input"  %>
+    </div>
+
+    <div class="form-group textOnInput">
+      <%= form.label :telephone_number %>
+      <%= form.text_field :telephone_number, class: "free-text-input" %>
+    </div>
   </div>
+  <div class="d-inline-flex justify-content-between ms-5">
+    <div class="form-group textOnInput">
+      <%= form.label :email_address %>
+      <%= form.text_field :email_address, class: "free-text-input" %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :address %>
-    <%= form.text_field :address, class: "form-control"  %>
+    <div class="form-group textOnInput">
+      <%= form.label :client_email_address %>
+      <%= form.text_field :email, class: "free-text-input" %>
+    </div>
   </div>
-
-  <div class="form-group">
-    <%= form.label :telephone_number %>
-    <%= form.text_field :telephone_number, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :email_address %>
-    <%= form.text_field :email_address, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :client_email_address %>
-    <%= form.text_field :email, class: "form-control" %>
-  </div>
-
   <div class="actions mt-5">
     <%= form.submit class: "btn-big"%>
     <%# <%= render 'shared/primary_button' do %>
