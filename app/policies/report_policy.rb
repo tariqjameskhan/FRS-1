@@ -6,6 +6,10 @@ class ReportPolicy < ApplicationPolicy
     # end
   end
 
+  def new?
+    return true
+  end
+
   def show?
     return true
   end
