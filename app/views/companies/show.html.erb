@@ -52,12 +52,6 @@
     <%# </div>
   </div>
 
-  <div data-controller="map"
-    id="map"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-    style='width: 100%; height: 600px;'></div>
-
-  <div class="p-3"> %>
     <%# <p>Address</p> %>
     <%# <p class="free-text-input"><%= @company.address %>
   <%# </div> %>
@@ -80,6 +74,11 @@
         <%# </div> %>
       <%# </div> %>
     <%# </div> %>
+  <div data-controller="map"
+    id="map"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+    style='width: 100%; height: 600px;'>
+  </div>
   <div class="d-flex justify-content-between">
     <% if current_user.inspector? %>
         <%= link_to 'Edit Company', edit_company_path(@company), class: 'btn-big-dark' %>
