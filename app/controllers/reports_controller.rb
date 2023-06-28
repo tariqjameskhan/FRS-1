@@ -11,9 +11,8 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
     @report.company = @company
     authorize @report
-    raise
     if @report.save
-      redirect_to company_report_path(@company, report)
+      redirect_to company_report_path(@company, @report)
     else
       render :new, status: :unprocessable_entity
     end
