@@ -2,8 +2,8 @@
 <div class="container mt-5">
   <h1>Edit Report</h1>
 
-  <%= simple_form_for [@company, @report], html: {data: {form_target: "form"}} do |f| %>
-  <%= f.input :premises_name %>
+  <%= simple_form_for [@company, @report], html: {data: {form_target: "form"}}, class: "free-text-input" do |f| %>
+  <%= f.input :premises_name, class: "free-text-input" %>
   <%= f.input :street_address %>
   <%= f.input :city %>
   <%= f.input :postcode %>
