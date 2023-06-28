@@ -9,6 +9,7 @@
   <%= f.input :postcode %>
   <%= f.input :telephone_number %>
   <%= f.input :date_report_completed %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.submit "Edit", class: "btn-big" %>
   <% end %>
 
