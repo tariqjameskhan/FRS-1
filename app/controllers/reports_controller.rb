@@ -1,4 +1,9 @@
 class ReportsController < ApplicationController
+  def new
+    @report = Report.new
+    render :new
+  end
+
   def show
     @report = Report.find(params[:id])
     authorize @report
