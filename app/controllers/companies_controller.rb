@@ -5,6 +5,15 @@ class CompaniesController < ApplicationController
   def index
     @companies = policy_scope(Company)
     @companies = Company.all unless @companies
+
+    @markers = @companies.geocoded.map do |company|
+      {
+        lat: company.latitude,
+        lng: company.longitude
+      }
+    end
+
+
   end
 
   def show

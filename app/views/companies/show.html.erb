@@ -1,3 +1,4 @@
+
 <div class="container mt-5">
   <h1><%= @company.name %></h1>
 
@@ -50,10 +51,17 @@
       <%# <p class="free-text-input"><%= @company.telephone_number %>
     <%# </div>
   </div>
+
+  <div data-controller="map"
+    id="map"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+    style='width: 100%; height: 600px;'></div>
+
   <div class="p-3"> %>
     <%# <p>Address</p> %>
     <%# <p class="free-text-input"><%= @company.address %>
   <%# </div> %>
+
 
   <%# <div class="row">
     <div class="col-sm-6 col-md-4 col-lg-3">
