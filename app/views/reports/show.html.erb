@@ -32,9 +32,11 @@
   </div>
   <% if @report.photos.any? %>
     <h2>Photos</h2>
-    <div class="d-inline-flex mt-3">
+    <div class="d-inline-flex mt-1">
       <% @report.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, width: 200, height: 200, crop: :fill %>
+        <div class="m-4">
+          <%= cl_image_tag photo.key, width: 200, height: 200, crop: :fill %>
+        </div>
       <% end %>
     </div>
   <% end %>
