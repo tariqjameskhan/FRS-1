@@ -18,6 +18,10 @@ class CompaniesController < ApplicationController
 
   def show
     authorize(@company)
+    @markers = [{
+      lat: @company.latitude,
+      lng: @company.longitude
+    }]
   end
 
   def new
