@@ -1,6 +1,12 @@
 class ReportsController < ApplicationController
   def new
     @report = Report.new
+    authorize @report
+  end
+
+  def create
+    @report = Report.new(report_params)
+    authorize @report
     render :new
   end
 
