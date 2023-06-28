@@ -11,22 +11,24 @@
 }
 
 .button-primary:hover {
-  background-color: red;
+  background-color: orangered;
   color: white;
   text-decoration: none;
 }
 
 .button-secondary {
   background-color: transparent;
-  // border: 1px solid ;
+  border: 2px solid ;
   padding: 8px 16px;
   border-radius: 50px;
-  color: orangered;
+  color: orange;
+  border-color: orange;
 }
 
 .button-secondary:hover {
-  color: red;
+  color: orangered;
   text-decoration: none;
+  border-color: orangered;
 }
 
 /* Auto layout */
