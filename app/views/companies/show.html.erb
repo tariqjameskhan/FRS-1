@@ -79,7 +79,7 @@
     </div>
     <div class="justify-content-end">
       <% if current_user.inspector? %>
-        <%= link_to 'Create report', "#", class: 'btn-big-dark' %>
+        <%= link_to 'Create report', new_company_report_path(@company), class: 'btn-big-dark' %>
       <% end %>
     </div>
   </div>
