@@ -161,6 +161,7 @@ require 'faker'
 # question.save!
 ############################# report-question seeds #################
 @reports = Report.all
+puts "created report"
 @reports.each do |report|
   # for every report
   @questions = Question.all
@@ -170,8 +171,9 @@ require 'faker'
     # new instance of report_question
     @report_question.question = question
     # assign a question
-    @report_question.report = report
+    @report_question.report = @report
     # assigned to the report
     @report_question.save!
+    puts "added question to report"
   end
 end
