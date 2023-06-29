@@ -20,6 +20,9 @@ export default class extends Controller {
         new mapboxgl.Marker()
     .setLngLat([marker.lng, marker.lat])
     .addTo(this.map)
+
+    this.map.setCenter([marker.lng, marker.lat]);
+    this.map.zoomTo(12);
     })
 
   }
