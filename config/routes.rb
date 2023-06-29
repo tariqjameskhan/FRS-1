@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :companies do
     resources :reports, only: [:new, :create, :show, :edit, :update] do
-      resources :report_questions, only: [:new, :create]
+      resources :report_questions, only: [:show, :edit]
     end
   end
 end
