@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_28_093419) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_29_131508) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,6 +68,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_28_093419) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "report_questions", force: :cascade do |t|
+    t.bigint "report_id", null: false
+    t.bigint "question_id", null: false
+    t.boolean "answer"
+    t.text "fault"
+    t.text "recommendation"
+    t.string "priority"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_report_questions_on_question_id"
+    t.index ["report_id"], name: "index_report_questions_on_report_id"
+  end
+
   create_table "reports", force: :cascade do |t|
     t.string "premises_name"
     t.string "street_address"
@@ -103,5 +117,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_28_093419) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "companies", "users", column: "client_id"
   add_foreign_key "companies", "users", column: "inspector_id"
+  add_foreign_key "report_questions", "questions"
+  add_foreign_key "report_questions", "reports"
   add_foreign_key "reports", "companies"
 end
