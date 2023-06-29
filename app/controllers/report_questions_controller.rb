@@ -1,6 +1,6 @@
 class ReportQuestionsController < ApplicationController
   def new
-    @report_question = Report_question.new
+    @report_question = ReportQuestion.new
   end
 
   def create

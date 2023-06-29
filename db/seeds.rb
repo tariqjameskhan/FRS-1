@@ -113,49 +113,65 @@ require 'faker'
 # puts "finished!"
 
 # ########################### question seeds #######################
-puts "deleting old questions"
-Question.destroy_all
-puts "making new ones!"
-puts "creating questions"
-question = Question.new(question_name: "Is the fire alarm suitable and sufficient for the premises and risk type?")
-question.save!
-num = 0
-puts "question number #{num += 1} has been created"
-question = Question.new(question_name: "Is the fire alarm connected to an alarm recieving centre?")
-question.save!
+# puts "deleting old questions"
+# Question.destroy_all
+# puts "making new ones!"
+# puts "creating questions"
+# question = Question.new(question_name: "Is the fire alarm suitable and sufficient for the premises and risk type?")
+# question.save!
+# num = 0
+# puts "question number #{num += 1} has been created"
+# question = Question.new(question_name: "Is the fire alarm connected to an alarm recieving centre?")
+# question.save!
 
-puts "question number #{num += 1} has been created"
-question = Question.new(question_name: "Is the fire alarm being maintained in accordance with BS 5839 part 1?")
-question.save!
+# puts "question number #{num += 1} has been created"
+# question = Question.new(question_name: "Is the fire alarm being maintained in accordance with BS 5839 part 1?")
+# question.save!
 
-puts "question number #{num += 1} has been created"
-question = Question.new(question_name: "Have staff recieved fire awareness training?")
-question.save!
+# puts "question number #{num += 1} has been created"
+# question = Question.new(question_name: "Have staff recieved fire awareness training?")
+# question.save!
 
-puts "question number #{num += 1} has been created"
-question = Question.new(question_name: "Have specific staff been given Fire Warden or Marshall training along with an appropriate level of responsibility?")
-question.save!
+# puts "question number #{num += 1} has been created"
+# question = Question.new(question_name: "Have specific staff been given Fire Warden or Marshall training along with an appropriate level of responsibility?")
+# question.save!
 
-puts "question number #{num += 1} has been created"
-question = Question.new(question_name: "Have staff received any practical fire extinguisher training?")
-question.save!
+# puts "question number #{num += 1} has been created"
+# question = Question.new(question_name: "Have staff received any practical fire extinguisher training?")
+# question.save!
 
-puts "question number #{num += 1} has been created"
-question = Question.new(question_name: "Is there an evacuation plan present?")
-question.save!
+# puts "question number #{num += 1} has been created"
+# question = Question.new(question_name: "Is there an evacuation plan present?")
+# question.save!
 
-puts "question number #{num += 1} has been created"
-question = Question.new(question_name: "Are fire drills called out periodically")
-question.save!
+# puts "question number #{num += 1} has been created"
+# question = Question.new(question_name: "Are fire drills called out periodically")
+# question.save!
 
-puts "question number #{num += 1} has been created"
-question = Question.new(question_name: "Are portable fire extinguishers available?")
-question.save!
+# puts "question number #{num += 1} has been created"
+# question = Question.new(question_name: "Are portable fire extinguishers available?")
+# question.save!
 
-puts "question number #{num += 1} has been created"
-question = Question.new(question_name: "Have fire extinguishers been serviced regularly by a competent person in accordance with BS 5306?")
-question.save!
+# puts "question number #{num += 1} has been created"
+# question = Question.new(question_name: "Have fire extinguishers been serviced regularly by a competent person in accordance with BS 5306?")
+# question.save!
 
-puts "question number #{num += 1} has been created"
-question = Question.new(question_name: "Are fire extinguishers provided suitable for the risks in the premises")
-question.save!
+# puts "question number #{num += 1} has been created"
+# question = Question.new(question_name: "Are fire extinguishers provided suitable for the risks in the premises")
+# question.save!
+############################# report-question seeds #################
+@reports = Report.all
+@reports.each do |report|
+  # for every report
+  @questions = Question.all
+  # for every question
+  @questions.each do |question|
+    @report_question = ReportQuestion.new
+    # new instance of report_question
+    @report_question.question = question
+    # assign a question
+    @report_question.report = report
+    # assigned to the report
+    @report_question.save!
+  end
+end

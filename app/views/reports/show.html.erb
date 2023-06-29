@@ -73,6 +73,14 @@
       <p class="free-text-input"><%= @report.company.client.email %></p>
     </div>
   </div>
+  <div class="d-inline-flex">
+    <% @report_questions.each do |report_q| %>
+      <div class="p-3">
+      <p><%= report_q.question.question_name %></p>
+      <p class="free-text-input"><%= report_q.question.answer %></p>
+    </div>
+    <% end %>
+  </div>
   <div class="d-flex justify-content-between mt-5">
     <div>
       <%= link_to 'Back to Company', company_path(@report.company), class: 'btn-big-dark' %>

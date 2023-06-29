@@ -21,6 +21,7 @@ class ReportsController < ApplicationController
   def show
     @report = Report.find(params[:id])
     authorize @report
+    @report_questions = @report.report_questions
   end
 
   def edit
