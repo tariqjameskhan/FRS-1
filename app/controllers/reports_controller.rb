@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-  before_action :set_company, only: [:new, :create, :edit, :update]
+  before_action :set_company, only: [:new, :create, :edit, :update, :show]
 
   def new
     @report = Report.new
