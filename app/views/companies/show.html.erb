@@ -13,26 +13,36 @@
           </ul>
         </div>
       <% end %>
+      <div class="container">
         <div class="d-inline-flex justify-content-between ms-5 p-3 mt-5">
-          <div class="form-group textOnInput">
-            <%= form.label :name %>
-            <%= form.text_field :name, class: "free-text-input" %>
+          <div class="col-md-8">
+            <div class="form-group textOnInput">
+              <%= form.label :name %>
+              <%= form.text_field :name, class: "free-text-input" %>
+            </div>
+            <div class="form-group textOnInput">
+              <%= form.label :email_address %>
+              <%= form.text_field :email_address, class: "free-text-input"  %>
+            </div>
+            <div class="form-group textOnInput">
+              <%= form.label :telephone_number %>
+              <%= form.text_field :telephone_number, class: "free-text-input" %>
+            </div>
+            <div class="form-group textOnInput">
+              <%= form.label :address %>
+              <%= form.text_field :address, class: "free-text-input-big" %>
+            </div>
           </div>
-          <div class="form-group textOnInput">
-            <%= form.label :email_address %>
-            <%= form.text_field :email_address, class: "free-text-input"  %>
-          </div>
-          <div class="form-group textOnInput">
-            <%= form.label :telephone_number %>
-            <%= form.text_field :telephone_number, class: "free-text-input" %>
+          <div class="col-lg-6">
+            <div class="map" data-controller="map"
+              id="map"
+              data-map-markers-value="<%= @markers.to_json %>"
+              data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+              >
+            </div>
           </div>
         </div>
-        <div class="p-3">
-          <div class="form-group textOnInput">
-            <%= form.label :address %>
-            <%= form.text_field :address, class: "free-text-input-big" %>
-          </div>
-        </div>
+      </div>
         <%# <div class="actions"> %>
           <%# <%= form.submit class: "btn"%>
         <%# </div> %>
@@ -74,12 +84,6 @@
         <%# </div> %>
       <%# </div> %>
     <%# </div> %>
-  <div class="map" data-controller="map"
-    id="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-    >
-  </div>
 
   <div class="d-flex justify-content-between">
     <% if current_user.inspector? %>
