@@ -159,3 +159,22 @@ question.save!
 puts "question number #{num += 1} has been created"
 question = Question.new(question_name: "Are fire extinguishers provided suitable for the risks in the premises")
 question.save!
+############################# report-question seeds #################
+@reports = Report.all
+
+@reports.each do |report|
+  # for every report
+  puts "created report"
+  @questions = Question.all
+  # for every question
+  @questions.each do |question|
+    @report_question = ReportQuestion.new
+    # new instance of report_question
+    @report_question.question = question
+    # assign a question
+    @report_question.report = @report
+    # assigned to the report
+    @report_question.save!
+    puts "added question to report"
+  end
+end
