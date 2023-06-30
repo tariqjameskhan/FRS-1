@@ -44,6 +44,11 @@ class CompaniesController < ApplicationController
     @client = User.where(client_params).first
     @company.client_id = @client.id if @client.present?
     authorize @company
+    if @company.save
+      redirect_to company_path(@company)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
