@@ -7,7 +7,12 @@ class CompaniesController < ApplicationController
     @companies = Company.all unless @companies
     if params[:query].present?
       @companies = @companies.where(name: params[:query])
+      respond_to do |format|
+        format.html
+        format.json { render json: @companies }
+      end
     end
+
 
     @markers = @companies.geocoded.map do |company|
       {
@@ -39,15 +44,6 @@ class CompaniesController < ApplicationController
     @client = User.where(client_params).first
     @company.client_id = @client.id if @client.present?
     authorize @company
-    respond_to do |format|
-      if @company.save
-        format.html { redirect_to company_path(@company) }
-        format.json # Follow the classic Rails flow and look for a create.json view
-      else
-        format.html { render "companies/new", status: :unprocessable_entity }
-        format.json # Follow the classic Rails flow and look for a create.json view
-      end
-    end
   end
 
   def edit
