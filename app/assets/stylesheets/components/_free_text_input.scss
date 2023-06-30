@@ -54,3 +54,8 @@
   bottom: 0;
   z-index: -1;
 }
+
+input[readonly] {
+  pointer-events: none;
+  /* Add any other desired styles */
+}
