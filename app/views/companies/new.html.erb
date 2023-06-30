@@ -1,13 +1,15 @@
-<div class="container margin-top-negative">
-  <div class="row">
-    <div class="col-8 mx-auto">
-      <div class="m-3">
-        <div class="row bg-light mt-3 p-3 justify-content-center">
-          <h1>New Company</h1>
-        </div>
-        <div class="row bg-light mt-3 p-3 justify-content-center">
-          <%= render 'form', company: @company %>
-        </div>
+
+ <div data-insert-in-list-target="items">
+  <div class="container margin-top-negative">
+    <div class="row">
+      <div class="col-8 mx-auto">
+        <div class="m-3">
+          <div class="row bg-light mt-3 p-3 justify-content-center">
+            <h1>New Company</h1>
+          </div>
+          <div class="row bg-light mt-3 p-3 justify-content-center">
+            <%= render 'form', company: @company %>
+          </div>
         <%# <div class="row mt-3 justify-content-between align-items-center"> %>
           <%# <%= render 'shared/primary_button' do %>
             <%# <%= link_to 'Back', companies_path %>
