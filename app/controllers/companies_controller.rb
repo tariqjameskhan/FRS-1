@@ -5,6 +5,14 @@ class CompaniesController < ApplicationController
   def index
     @companies = policy_scope(Company)
     @companies = Company.all unless @companies
+    if params[:query].present?
+      @companies = @companies.where(name: params[:query])
+      respond_to do |format|
+        format.html
+        format.json { render json: @companies }
+      end
+    end
+
 
     @markers = @companies.geocoded.map do |company|
       {
@@ -36,11 +44,6 @@ class CompaniesController < ApplicationController
     @client = User.where(client_params).first
     @company.client_id = @client.id if @client.present?
     authorize @company
-    if @company.save
-      redirect_to company_path(@company)
-    else
-      render :new, status: :unprocessable_entity
-    end
   end
 
   def edit
