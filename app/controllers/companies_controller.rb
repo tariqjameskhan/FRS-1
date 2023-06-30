@@ -5,6 +5,9 @@ class CompaniesController < ApplicationController
   def index
     @companies = policy_scope(Company)
     @companies = Company.all unless @companies
+    if params[:query].present?
+      @companies = @companies.where(name: params[:query])
+    end
 
     @markers = @companies.geocoded.map do |company|
       {
