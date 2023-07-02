@@ -6,13 +6,12 @@ class CompaniesController < ApplicationController
     @companies = policy_scope(Company)
     @companies = Company.all unless @companies
     if params[:query].present?
-      @companies = @companies.where(name: params[:query])
+      @companies = @companies.where("name ILIKE ?", "%#{params[:query]}%")
       respond_to do |format|
         format.html
         format.json { render json: @companies }
       end
     end
-
 
     @markers = @companies.geocoded.map do |company|
       {
@@ -20,8 +19,6 @@ class CompaniesController < ApplicationController
         lng: company.longitude
       }
     end
-
-
   end
 
   def show
