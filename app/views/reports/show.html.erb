@@ -30,6 +30,14 @@
       <p class="free-text-input"><%= @report.postcode %></p>
     </div>
   </div>
+  <div class="col-lg-6">
+    <div class="map" data-controller="map"
+              id="map"
+              data-map-markers-value="<%= @markers.to_json %>"
+              data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+              >
+    </div>
+  </div>
   <% if @report.photos.any? %>
     <h2>Photos</h2>
     <div class="d-inline-flex mt-1">
