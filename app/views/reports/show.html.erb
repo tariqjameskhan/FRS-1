@@ -14,6 +14,9 @@
       <p>Name of Assessor</p>
       <p class="free-text-input"><%= @report.company.inspector.first_name %> <%= @report.company.inspector.last_name %></p>
     </div>
+    <div class="p-3 mt-5">
+      <%= link_to 'Action plan', action_plan_path(@company, @report), class: 'btn-big' %>
+    </div>
   </div>
   <h2>Address</h2>
   <div class="d-inline-flex">
@@ -82,7 +85,7 @@
     </div>
   </div>
   <div>
-    <% @report_questions.each do |report_q| %>
+    <% @report_questions.sort.each do |report_q| %>
       <div class="m-3">
         <%= form_with(model: [@company, @report, report_q], local: true) do |form| %>
         <h5 class="card-title"><%= report_q.question.question_name %></h5>
@@ -132,6 +135,9 @@
   <div class="d-flex justify-content-between mt-5">
     <div>
       <%= link_to 'Back to Company', company_path(@report.company), class: 'btn-big-dark' %>
+    </div>
+    <div>
+      <%= link_to 'Action plan', action_plan_path(@company, @report), class: 'btn-big' %>
     </div>
     <div class="justify-content-end">
       <% if current_user.inspector? %>
