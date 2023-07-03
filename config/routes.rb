@@ -16,4 +16,6 @@ Rails.application.routes.draw do
       resources :report_questions, only: [:show, :edit, :update]
     end
   end
+
+  get "/companies/:company_id/reports/:id/action_plan", to: "reports#action_plan", as: :action_plan
 end

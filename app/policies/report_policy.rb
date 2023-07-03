@@ -25,4 +25,8 @@ class ReportPolicy < ApplicationPolicy
   def update?
     return edit?
   end
+
+  def action_plan?
+    return true
+  end
 end
