@@ -34,6 +34,10 @@ class ReportsController < ApplicationController
     @report = Report.find(params[:id])
     authorize @report
     @report_questions = @report.report_questions
+    @markers = [{
+      lat: @report.latitude,
+      lng: @report.longitude
+    }]
   end
 
   def edit
