@@ -57,6 +57,13 @@ class ReportsController < ApplicationController
     end
   end
 
+  def action_plan
+    @report = Report.find(params[:id])
+    authorize @report
+    @company = @report.company
+    @report_questions = @report.report_questions
+  end
+
   private
 
   def report_params
