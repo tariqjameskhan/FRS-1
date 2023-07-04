@@ -141,9 +141,9 @@
             <%# <% end %> %>
           </div>
           <div class="d-flex mt-4">
-            <div class="form-group textOnInput">
+            <div class="form-group m-3 p-3">
               <%= form.label :priority %>
-              <%= form.text_field :priority, class: "free-text-input" %>
+              <%= form.select :priority, ["HIGH", "MEDIUM", "LOW"], class: "me-5" %>
             </div>
             <div class="form-group textOnInput">
               <%= form.label :date %>

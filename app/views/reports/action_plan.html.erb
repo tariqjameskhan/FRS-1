@@ -21,11 +21,11 @@
               <th scope="row"><%= num += 1 %></th>
               <td><%= report_q.fault %></td>
               <td><%= report_q.recommendation %></td>
-              <% if report_q.priority == "high" %>
+              <% if report_q.priority == "HIGH" %>
                 <td class="bg-danger">HIGH</td>
-              <% elsif report_q.priority == "medium" %>
+              <% elsif report_q.priority == "MEDIUM" %>
                 <td class="bg-warning">MEDIUM</td>
-              <% elsif report_q.priority == "low" %>
+              <% elsif report_q.priority == "LOW" %>
                 <td class="bg-success">LOW</td>
               <% else %>
                 <td></td>
