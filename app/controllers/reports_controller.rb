@@ -34,6 +34,12 @@ class ReportsController < ApplicationController
     @report = Report.find(params[:id])
     authorize @report
     @report_questions = @report.report_questions
+    # @questions = @report_questions.each do |report_q|
+    #   report_q.question
+    # end
+    # @faults = @questions.each do |question|
+    #   question.fault
+    # end
     @markers = [{
       lat: @report.latitude,
       lng: @report.longitude
