@@ -89,36 +89,40 @@
       <div class="m-3">
         <%= form_with(model: [@company, @report, report_q], local: true) do |form| %>
         <h5 class="card-title"><%= report_q.question.question_name %></h5>
-        <div class="">
+        <% @faults = report_q.question.faults %>
+        <% @fault_names = [" "] %>
+        <% @fault_recommendations = [" "] %>
+        <% @faults.each do |fault| %>
+          <% @fault_names << fault.fault_detail %>
+          <% @fault_recommendations << fault.recommendation %>
+        <% end %>
+        <div class="field">
           <%= form.label :answer, class: "" %>
           <%= form.check_box :answer, class: "" %>
-
-              <%# <input type="checkbox" class="js-switch" checked /> %>
         </div>
           <div class="d-flex mt-5">
-            <div class="form-check form-switch">
-              <%= form.label :answer, class: "" %>
-              <%= form.check_box :answer, class: "form-check-input" %>
-
+            <%# <div class="form-check form-switch"> %>
+              <%# <%= form.label :answer, class: "" %>
+              <%# <%= form.check_box :answer, class: "form-check-input" %>
               <%# <input type="checkbox" class="js-switch" checked /> %>
-            </div>
+            <%# </div> %>
             <%# <div class="form-check form-switch"> %>
               <%# <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"> %>
               <%# <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label> %>
             <%# </div> %>
             <div class="form-group textOnInput">
               <%= form.label :fault %>
-              <%= form.text_field :fault, class: "free-text-input" %>
+              <%= form.select :fault, @fault_names, class: "" %>
             </div>
             <div class="form-group textOnInput">
               <%= form.label :recommendation %>
-              <%= form.text_field :recommendation, class: "free-text-input" %>
+              <%= form.select :recommendation, @fault_recommendations, class: "" %>
             </div>
           </div>
           <div class="d-flex mt-4">
             <div class="form-group textOnInput">
               <%= form.label :priority %>
-              <%= form.text_field :priority, class: "free-text-input" %>
+              <%= form.select :priority, ["HIGH", "MEDIUM", "LOW"], class: "" %>
             </div>
             <div class="form-group textOnInput">
               <%= form.label :date %>
@@ -129,6 +133,24 @@
             </div>
           </div>
         <% end %>
+        <table class="table table-striped mt-5">
+          <thead>
+            <tr>
+             <th scope="col">No.</th>
+              <th scope="col">Fault</th>
+              <th scope="col">Recommendation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @faults.each do |fault| %>
+              <tr>
+                <th scope="row"></th>
+                <th><%= fault.fault_detail %> </th>
+                <th><%= fault.recommendation %></th>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     <% end %>
   </div>

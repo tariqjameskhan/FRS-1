@@ -15,7 +15,7 @@ class ReportsController < ApplicationController
       @questions = Question.all
       # for every question
       @questions.each do |question|
-        @report_question = ReportQuestion.new
+        @report_question = ReportQuestion.new(answer: false)
         # new instance of report_question
         @report_question.question = question
         # assign the question for example report_question(1) will be assinged question(1)
@@ -61,7 +61,9 @@ class ReportsController < ApplicationController
     @report = Report.find(params[:id])
     authorize @report
     @company = @report.company
-    @report_questions = @report.report_questions
+    @report_questions = @report.report_questions.select do |question|
+      question if question.answer == false && question.fault.present?
+    end
   end
 
   private
