@@ -1,4 +1,3 @@
-
 <div class="container mt-5">
   <h1><%= @company.name %></h1>
 
@@ -66,7 +65,6 @@
     <%# <p class="free-text-input"><%= @company.address %>
   <%# </div> %>
 
-
   <%# <div class="row">
     <div class="col-sm-6 col-md-4 col-lg-3">
       <div class="card">
@@ -91,42 +89,57 @@
         <%= link_to 'Delete', company_path(@company), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn-big-dark' %>
     <% end %>
   </div>
+</div>
+
+  <div class="container mt-7" style="margin-top: 160px">
+  <div class="row justify-content-between">
+    <div class="col-lg-6">
+      <h1 class="mb-3">Reports</h1>
+    </div>
+    <%= form_with url: company_path, method: :get, class: "d-flex", data: { insert_in_list_target: "form", action: "submit->insert-in-list#send" } do %>
+    <%= text_field_tag :query,
+        params[:query],
+        class: "form-control mr-2",
+        placeholder: "Type a premise"
+    %>
+    <%= submit_tag "Search", name: "", class: "btn", style: "height: 40px;" %>
+    <% end %>
   </div>
-  <div class="container mt-5">
-  <h1 class="mb-3">Reports</h1>
+
   <div class="row">
     <table class="table table-striped mt-5">
-      <thead>
-        <tr>
-          <th scope="col">*</th>
-          <th scope="col">Premises name</th>
-          <th scope="col">Premises address</th>
-          <th scope="col">Tel</th>
-          <th scope="col">Date Completed</th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% num = 0 %>
-        <% @company.reports.each do |report| %>
+        <thead>
           <tr>
-            <th scope="row"><%= num += 1 %></th>
-            <td><%= report.premises_name %></td>
-            <td><%= report.street_address %></td>
-            <td><%= report.telephone_number %></td>
-            <td><%= report.date_report_completed %></td>
-            <% if current_user.inspector? %>
-            <td><%= link_to 'Edit', edit_company_report_path(@company, report), class: "btn"%></td>
-            <% else %>
-            <td></td>
-            <% end %>
-            <td><%= link_to 'View', company_report_path(@company, report), class: "btn"%></td>
+            <th scope="col">*</th>
+            <th scope="col">Premises name</th>
+            <th scope="col">Premises address</th>
+            <th scope="col">Tel</th>
+            <th scope="col">Date Completed</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
           </tr>
-        <% end %>
+        </thead>
+      <tbody>
+      <% num = 0 %>
+      <% @company.reports.each do |report| %>
+      <tr>
+        <th scope="row"><%= num += 1 %></th>
+         <td><%= report.premises_name %></td>
+         <td><%= report.street_address %></td>
+         <td><%= report.telephone_number %></td>
+         <td><%= report.date_report_completed %></td>
+         <% if current_user.inspector? %>
+         <td><%= link_to 'Edit', edit_company_report_path(@company, report), class: "btn"%></td>
+         <% else %>
+         <td></td>
+         <% end %>
+        <td><%= link_to 'View', company_report_path(@company, report), class: "btn"%></td>
+      </tr>
+      <% end %>
       </tbody>
-    </table>
+       </table>
   </div>
+
   <div class="d-flex justify-content-between mt-4">
     <div>
       <%= link_to 'Back to Companies', companies_path, class: 'btn-big-dark' %>
