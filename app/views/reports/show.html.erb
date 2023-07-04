@@ -91,9 +91,24 @@
         <h5 class="card-title"><%= report_q.question.question_name %></h5>
         <% @question = report_q.question %>
         <% @faults = @question.faults %>
-        <% @question.faults.each do |fault| %>
-          <p><%= fault.fault_detail %> - <%= fault.recommendation %></p>
-        <% end %>
+        <table class="table table-striped mt-5">
+          <thead>
+            <tr>
+             <th scope="col">No.</th>
+              <th scope="col">Fault</th>
+              <th scope="col">Recommendation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @question.faults.each do |fault| %>
+              <tr>
+                <th scope="row"></th>
+                <th><%= fault.fault_detail %> </th>
+                <th><%= fault.recommendation %></th>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
         <div class="field">
           <%= form.label :answer, class: "" %>
           <%= form.check_box :answer, class: "" %>
