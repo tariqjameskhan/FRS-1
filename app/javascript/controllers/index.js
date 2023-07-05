@@ -13,5 +13,8 @@ application.register("insert-in-list", InsertInListController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
+import QuestionCardController from "./question_card_controller"
+application.register("question-card", QuestionCardController)
+
 import SubmitAllFormsController from "./submit_all_forms_controller"
 application.register("submit-all-forms", SubmitAllFormsController)
