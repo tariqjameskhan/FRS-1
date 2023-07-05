@@ -12,3 +12,13 @@ application.register("insert-in-list", InsertInListController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+
+// import Flatpickr
+import Flatpickr from 'stimulus-flatpickr'
+
+// Import style for flatpickr
+require("flatpickr/dist/flatpickr.css")
+
+// Manually register Flatpickr as a stimulus controller
+application.register('flatpickr', Flatpickr)
