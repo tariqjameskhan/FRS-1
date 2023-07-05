@@ -122,35 +122,27 @@
           <div class="d-flex mt-4">
             <div class="form-group textOnInput">
               <%= form.label :priority %>
-              <%= form.select :priority, ["HIGH", "MEDIUM", "LOW"], class: "" %>
+              <%= form.select :priority, [" ", "HIGH", "MEDIUM", "LOW"], class: "" %>
             </div>
             <div class="form-group textOnInput">
               <%= form.label :date %>
               <%= form.text_field :date, class: "free-text-input" %>
             </div>
-            <div class="actions">
-              <%= form.submit class: "btn-big-dark"%>
+            <div class="d-inline-flex">
+              <div class="form-group textOnInput">
+                <%= form.label :photos %>
+                <%= form.file_field :photos, multiple: true, class: "free-text-input bg-white btn" %>
+              </div>
+              <div class="mt-2">
+                <h1><strong>+</strong></h1>
+              </div>
             </div>
+
+          </div>
+          <div class="actions d-flex justify-content-end mt-5">
+              <%= form.submit class: "btn-big-dark"%>
           </div>
         <% end %>
-        <table class="table table-striped mt-5">
-          <thead>
-            <tr>
-             <th scope="col">No.</th>
-              <th scope="col">Fault</th>
-              <th scope="col">Recommendation</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @faults.each do |fault| %>
-              <tr>
-                <th scope="row"></th>
-                <th><%= fault.fault_detail %> </th>
-                <th><%= fault.recommendation %></th>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
       </div>
     <% end %>
   </div>
