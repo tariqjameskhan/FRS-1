@@ -29,8 +29,8 @@ export default class extends Controller {
   //   })
   // }
 
-  click(event) {
-    event.preventDefault()
-    console.log("yayyyyyyy!", event)
-  }
+  // click(event) {
+  //   event.preventDefault()
+  //   console.log("yayyyyyyy!", event)
+  // }
 }
