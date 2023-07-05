@@ -3,6 +3,7 @@ class Report < ApplicationRecord
   has_many_attached :photos
   has_many :report_questions
   has_many :questions, through: :report_questions
+  accepts_nested_attributes_for :report_questions
 
   geocoded_by :full_address
   after_validation :geocode

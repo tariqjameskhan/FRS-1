@@ -51,115 +51,121 @@
       <% end %>
     </div>
   <% end %>
-  <h2 class="mt-4 mb-4">Construction details</h2>
-  <div class="m-3">
-    <%= form_with(model: [@company, @report], local: true) do |form| %>
-      <div class="form-group textOnInput">
-          <%= form.label :construction_details %>
-          <%= form.text_area :construction_details, cols: 115, rows: 6, class: "free-text-input" %>
-      </div>
-      <div class="d-inline-flex">
-        <div class="form-group textOnInput">
-            <%= form.label :number_of_floors %>
-            <%= form.text_field :number_of_floors, class: "free-text-input" %>
-        </div>
-        <div class="form-group textOnInput">
-            <%= form.label :floor_area %>
-            <%= form.text_field :floor_area, class: "free-text-input" %>
-        </div>
-        <div class="form-group textOnInput">
-          <%= form.label :photos, "Floor Plan" %>
-          <%= form.file_field :photos, multiple: true, class: "free-text-input bg-white btn" %>
-        </div>
-      </div>
-      <div class="actions mt-3 d-flex justify-content-end">
-        <%= form.button :submit, class: "btn-big-dark" %>
-      </div>
-    <% end %>
-  </div>
   <h2>Responsible Person</h2>
   <div class="d-inline-flex">
     <div class="p-3">
       <p>Full name</p>
-      <p class="free-text-input bg-white"><%= @report.company.client.first_name %> <%= @report.company.client.last_name %></p>
+      <p class="free-text-input"><%= @report.company.client.first_name %> <%= @report.company.client.last_name %></p>
     </div>
     <div class="p-3">
       <p>Phone number</p>
-      <p class="free-text-input bg-white"><%= @report.company.client.telephone_number %></p>
+      <p class="free-text-input"><%= @report.company.client.telephone_number %></p>
     </div>
     <div class="p-3">
       <p>Email</p>
-      <p class="free-text-input bg-white"><%= @report.company.client.email %></p>
+      <p class="free-text-input"><%= @report.company.client.email %></p>
     </div>
   </div>
-  <h2 class="mt-4 mb-4">Report</h2>
+  <h2 class="mt-4 mb-4">Construction Details</h2>
   <div>
-    <% @report_questions.sort.each do |report_q| %>
-      <div class="m-3">
-        <%= form_with(model: [@company, @report, report_q], local: true) do |form| %>
-          <div class="d-flex justify-content-between m-2 pb-3 pt-3">
+    <div class="m-3">
+      <% @names = [] %>
+      <% @fault_array = [] %>
+      <% @recommendation_array = [] %>
+      <% @report_questions.sort.each do |report_q| %>
+        <% @names << report_q.question.question_name %>
+        <% @faults = report_q.question.faults %>
+        <% @fault_names = [" "] %>
+        <% @fault_recommendations = [" "] %>
+        <% @faults.each do |fault| %>
+          <% @fault_names << fault.fault_detail %>
+          <% @fault_recommendations << fault.recommendation %>
+        <% end %>
+        <% @fault_array << @fault_names %>
+        <% @recommendation_array << @fault_recommendations %>
+      <% end %>
+      <% num = -1 %>
+      <%= form_with model: [@company, @report] do |p| %>
+        <div class="form-group textOnInput mt-5">
+            <%= p.label :construction_details %>
+            <%= p.text_area :construction_details, cols: 115, rows: 6, class: "free-text-input" %>
+        </div>
+        <div class="d-inline-flex">
+          <div class="form-group textOnInput">
+              <%= p.label :number_of_floors %>
+              <%= p.text_field :number_of_floors, class: "free-text-input" %>
+          </div>
+          <div class="form-group textOnInput">
+              <%= p.label :floor_area %>
+              <%= p.text_field :floor_area, class: "free-text-input" %>
+          </div>
+          <div class="form-group textOnInput">
+            <%= p.label :photos, "Photos" %>
+            <%= p.file_field :photos, multiple: true, class: "free-text-input bg-white btn" %>
+          </div>
+        </div>
+        <h2 class="mt-4 mb-4">Report</h2>
+        <%= p.fields_for :report_questions, @report.report_questions.sort do |f| %>
+          <%# <%= f.text_field :question_id %>
+          <% num += 1 %>
+          <div class="d-flex justify-content-between m-2 pb-3 pt-3 mt-5">
             <div>
-              <h5 class="card-title"><%= report_q.question.question_name %></h5>
+              <h5 class="card-title"><%= @names[num] %></h5>
             </div>
             <div class="field d-inline-flex">
               <p>This needs to be a SWITCH! ------></p>
-              <%= form.label :answer, class: "" %>
-              <%= form.check_box :answer, class: "me-5 pe-5" %>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+              </div>
+              <%= f.label :answer, class: "" %>
+              <%= f.check_box :answer, class: "me-5 pe-5" %>
             </div>
           </div>
-          <% @faults = report_q.question.faults %>
-          <% @fault_names = [" "] %>
-          <% @fault_recommendations = [" "] %>
-          <% @faults.each do |fault| %>
-            <% @fault_names << fault.fault_detail %>
-            <% @fault_recommendations << fault.recommendation %>
-          <% end %>
-          <div class="d-flex mt-5">
-            <div class="form-group textOnInput">
-              <%= form.label :fault %>
-              <%= form.select :fault, @fault_names, class: "" %>
-            </div>
-            <div class="form-group textOnInput">
-              <%= form.label :recommendation %>
-              <%= form.select :recommendation, @fault_recommendations, class: "" %>
-            </div>
+          <div class="d-flex mt-3">
+              <div class="form-group textOnInput">
+                <%= f.label :fault %>
+                <%= f.select :fault, @fault_array[num], class: "" %>
+              </div>
+              <div class="form-group textOnInput">
+                <%= f.label :recommendation %>
+                <%= f.select :recommendation, @recommendation_array[num], class: "" %>
+              </div>
           </div>
           <div class="d-flex mt-4">
-            <div class="form-group textOnInput">
-              <%= form.label :priority %>
-              <%= form.select :priority, [" ", "HIGH", "MEDIUM", "LOW"], class: "" %>
-            </div>
-            <div class="form-group textOnInput">
-              <%= form.label :date %>
-              <%= form.text_field :date, class: "free-text-input" %>
-            </div>
-            <div class="d-inline-flex">
               <div class="form-group textOnInput">
-                <%= form.label :photos %>
-                <%= form.file_field :photos, multiple: true, class: "free-text-input bg-white btn" %>
+                <%= f.label :priority %>
+                <%= f.select :priority, [" ", "HIGH", "MEDIUM", "LOW"], class: "" %>
               </div>
-              <div class="mt-2">
-                <h1><strong>+</strong></h1>
+              <div class="form-group textOnInput">
+                <%= f.label :date %>
+                <%= f.date_field :date, class: "free-text-input", data: { controller: "flatpickr", flatpickr_date_format: "Y-m-d", flatpickr_min_date: Time.zone.now } %>
+              </div>
+              <div class="d-inline-flex">
+                <%# <div class="form-group textOnInput">
+                  <%= form.label :photos %>
+                  <%# <%= form.file_field :photos, multiple: true, class: "free-text-input bg-white btn" %>
+                <%# </div> %>
+                <div class="mt-2">
+                  <h1><strong>+</strong></h1>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="actions d-flex justify-content-end mt-3 mb-5">
-              <%= form.submit class: "btn-big-dark"%>
-          </div>
         <% end %>
-      </div>
-    <% end %>
-  </div>
-  <div class="d-flex justify-content-between mt-5">
-    <div>
-      <%= link_to 'Back to Company', company_path(@report.company), class: 'btn-big-dark' %>
-    </div>
-    <div>
-      <%= link_to 'Action plan', action_plan_path(@company, @report), class: 'btn-big' %>
-    </div>
-    <div class="justify-content-end">
-      <% if current_user.inspector? %>
-        <%= link_to 'Submit', "#", class: 'btn-big-dark' %>
+        <div data-controller="submit-all-forms">
+          <div class="d-flex justify-content-between mt-5">
+            <div>
+              <%= link_to 'Back to Company', company_path(@report.company), class: 'btn-big-dark' %>
+            </div>
+            <div class="justify-content-end">
+              <% if current_user.inspector? %>
+                <%= p.submit class: "btn-big"%>
+              <% else %>
+                <%= link_to 'Action plan', action_plan_path(@company, @report), class: 'btn-big' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

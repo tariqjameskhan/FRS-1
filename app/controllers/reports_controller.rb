@@ -51,7 +51,7 @@ class ReportsController < ApplicationController
     # @company = Company.find(params[:company_id])
     authorize @report
     if @report.update(report_params)
-      redirect_to company_report_path(@company, @report)
+      redirect_to action_plan_path(@company, @report)
     else
       render :edit
     end
@@ -68,6 +68,20 @@ class ReportsController < ApplicationController
 
   private
 
+  # def report_params
+  #   params.require(:report).permit(
+  #     :premises_name,
+  #     :street_address,
+  #     :city, :postcode,
+  #     :telephone_number,
+  #     :date_report_completed,
+  #     :construction_details,
+  #     :number_of_floors,
+  #     :floor_area,
+  #     photos: []
+  #   )
+  # end
+
   def report_params
     params.require(:report).permit(
       :premises_name,
@@ -78,7 +92,8 @@ class ReportsController < ApplicationController
       :construction_details,
       :number_of_floors,
       :floor_area,
-      photos: []
+      photos: [],
+      report_questions_attributes: [:id, :answer, :fault, :recommendation, :date, :priority, :question_id]
     )
   end
 

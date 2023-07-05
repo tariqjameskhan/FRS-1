@@ -9,10 +9,14 @@ class ReportQuestionsController < ApplicationController
     @company = Company.find(params[:company_id])
     @report = Report.find(params[:report_id])
     authorize @report_question
-    if @report_question.update(report_question_params)
-      redirect_to company_report_path(@company, @report)
-    else
-      render :edit
+    respond_to do |format|
+      if @report_question.update(report_question_params)
+        format.html { redirect_to company_report_path(@company, @report) }
+        format.json
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json
+      end
     end
   end
 
