@@ -40,6 +40,30 @@ class ReportsController < ApplicationController
     }]
   end
 
+  def fire_alarm
+    @report = Report.find(params[:id])
+    @company = Company.find(params[:company_id])
+    authorize @report
+    @report_questions = []
+    @report.report_questions.each { |report_question| @report_questions << report_question if report_question.id < 4 }
+  end
+
+  def fire_training
+    @report = Report.find(params[:id])
+    @company = Company.find(params[:company_id])
+    authorize @report
+    @report_questions = []
+    @report.report_questions.each { |report_question| @report_questions << report_question if report_question.id > 3 && report_question.id < 9 }
+  end
+
+  def fire_extinguishers
+    @report = Report.find(params[:id])
+    @company = Company.find(params[:company_id])
+    authorize @report
+    @report_questions = []
+    @report.report_questions.each { |report_question| @report_questions << report_question if report_question.id > 8 }
+  end
+
   def edit
     @report = Report.find(params[:id])
     # @company = Company.find(params[:company_id])
@@ -67,20 +91,6 @@ class ReportsController < ApplicationController
   end
 
   private
-
-  # def report_params
-  #   params.require(:report).permit(
-  #     :premises_name,
-  #     :street_address,
-  #     :city, :postcode,
-  #     :telephone_number,
-  #     :date_report_completed,
-  #     :construction_details,
-  #     :number_of_floors,
-  #     :floor_area,
-  #     photos: []
-  #   )
-  # end
 
   def report_params
     params.require(:report).permit(
