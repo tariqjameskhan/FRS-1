@@ -18,10 +18,10 @@
       <%= link_to 'Action plan', action_plan_path(@company, @report), class: 'btn-big' %>
     </div>
     <div class="p-3 mt-5 ms-4">
-      <%= link_to 'Fire Alarm', fire_alarm_path(@company, @report), class: 'btn-big-dark' %>
+      <%= link_to 'Fire Alarm', fire_alarm_path(@company, @report), class: 'btn-big-dark', id: "red" %>
     </div>
     <div class="p-3 mt-5 ms-4">
-      <%= link_to 'Fire Training', fire_training_path(@company, @report), class: 'btn-big-dark' %>
+      <%= link_to 'Fire Training', fire_training_path(@company, @report), class: 'btn-big-dark', id: "blue" %>
     </div>
   </div>
   <h2>Address</h2>
@@ -39,7 +39,7 @@
       <p class="free-text-input"><%= @report.postcode %></p>
     </div>
     <div class="p-3 mt-5 ms-4">
-      <%= link_to 'Fire Extinguishers', fire_extinguishers_path(@company, @report), class: 'btn-big-dark' %>
+      <%= link_to 'Fire Extinguishers', fire_extinguishers_path(@company, @report), class: 'btn-big-dark', id: "green" %>
     </div>
   </div>
   <div class="col-lg-6 mt-5 mb-5">
