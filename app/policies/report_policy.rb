@@ -29,4 +29,16 @@ class ReportPolicy < ApplicationPolicy
   def action_plan?
     return true
   end
+
+  def fire_alarm?
+    return true
+  end
+
+  def fire_training?
+    return true
+  end
+
+  def fire_extinguishers?
+    return true
+  end
 end

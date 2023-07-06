@@ -18,4 +18,7 @@ Rails.application.routes.draw do
   end
 
   get "/companies/:company_id/reports/:id/action_plan", to: "reports#action_plan", as: :action_plan
+  get "/companies/:company_id/reports/:id/fire_alarm", to: "reports#fire_alarm", as: :fire_alarm
+  get "/companies/:company_id/reports/:id/fire_training", to: "reports#fire_training", as: :fire_training
+  get "/companies/:company_id/reports/:id/fire_extinguishers", to: "reports#fire_extinguishers", as: :fire_extinguishers
 end
