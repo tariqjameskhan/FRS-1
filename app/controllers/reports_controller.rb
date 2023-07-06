@@ -92,20 +92,6 @@ class ReportsController < ApplicationController
 
   private
 
-  # def report_params
-  #   params.require(:report).permit(
-  #     :premises_name,
-  #     :street_address,
-  #     :city, :postcode,
-  #     :telephone_number,
-  #     :date_report_completed,
-  #     :construction_details,
-  #     :number_of_floors,
-  #     :floor_area,
-  #     photos: []
-  #   )
-  # end
-
   def report_params
     params.require(:report).permit(
       :premises_name,
