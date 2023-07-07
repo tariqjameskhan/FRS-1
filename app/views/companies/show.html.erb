@@ -19,15 +19,15 @@
               <%= form.label :name, "Company Name" %>
               <%= form.text_field :name, class: "free-text-input-big", readonly: true %>
             </div>
-            <div class="form-group textOnInput">
+            <div class="form-group textOnInput mt-3">
               <%= form.label :email_address %>
               <%= form.text_field :email_address, class: "free-text-input-big", readonly: true  %>
             </div>
-            <div class="form-group textOnInput">
+            <div class="form-group textOnInput mt-3">
               <%= form.label :telephone_number %>
               <%= form.text_field :telephone_number, class: "free-text-input-big", readonly: true %>
             </div>
-            <div class="form-group textOnInput">
+            <div class="form-group textOnInput mt-3">
               <%= form.label :address %>
               <%= form.text_field :address, class: "free-text-input-big", readonly: true %>
             </div>
@@ -44,44 +44,6 @@
           <%# <%= form.submit class: "btn"%>
         <%# </div> %>
     <% end %>
-  <%# <div class="d-inline-flex justify-content-between">
-    <div class="p-3">
-      <p>Company name</p>
-      <p class="free-text-input"><%= @company.name %>
-    <%# </div>
-    <div class="p-3">
-      <p>Email</p> %>
-      <%# <p class="free-text-input"><%= @company.email_address %>
-    <%# </div>
-    <div class="p-3">
-      <p>Telephone number</p> %>
-      <%# <p class="free-text-input"><%= @company.telephone_number %>
-    <%# </div>
-  </div>
-
-    <%# <p>Address</p> %>
-    <%# <p class="free-text-input"><%= @company.address %>
-  <%# </div> %>
-
-
-  <%# <div class="row">
-    <div class="col-sm-6 col-md-4 col-lg-3">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Company Details</h5>
-          <p class="card-text">
-            <strong>Address:</strong> <%= @company.address %>
-            <%# <strong>Email:</strong> <%= @company.email_address %>
-            <%# <strong>Telephone:</strong> <%= @company.telephone_number %>
-          <%# </p> %>
-          <%# <% if current_user.inspector? %>
-            <%# <%= link_to 'Edit', edit_company_path(@company), class: 'btn btn-warning' %>
-            <%# <%= link_to 'Delete', company_path(@company), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-          <%# <% end %>
-        <%# </div> %>
-      <%# </div> %>
-    <%# </div> %>
-
   <div class="d-flex justify-content-between">
     <% if current_user.inspector? %>
         <%= link_to 'Delete', company_path(@company), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn-big-dark' %>
