@@ -13,36 +13,33 @@
           </ul>
         </div>
       <% end %>
-      <div class="container">
         <div class="d-inline-flex justify-content-between ms-5 p-3 mt-5">
-          <div class="col-md-8">
+          <div class="col-md-12">
             <div class="form-group textOnInput">
-              <%= form.label :name %>
-              <%= form.text_field :name, class: "free-text-input", readonly: true %>
+              <%= form.label :name, "Company Name" %>
+              <%= form.text_field :name, class: "free-text-input-big", readonly: true %>
             </div>
             <div class="form-group textOnInput">
               <%= form.label :email_address %>
-              <%= form.text_field :email_address, class: "free-text-input", readonly: true  %>
+              <%= form.text_field :email_address, class: "free-text-input-big", readonly: true  %>
             </div>
             <div class="form-group textOnInput">
               <%= form.label :telephone_number %>
-              <%= form.text_field :telephone_number, class: "free-text-input", readonly: true %>
+              <%= form.text_field :telephone_number, class: "free-text-input-big", readonly: true %>
             </div>
             <div class="form-group textOnInput">
               <%= form.label :address %>
               <%= form.text_field :address, class: "free-text-input-big", readonly: true %>
             </div>
           </div>
-          <div class="col-lg-6">
-            <div class="map" data-controller="map"
-              id="map"
-              data-map-markers-value="<%= @markers.to_json %>"
-              data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-              >
-            </div>
+          <div class="map col-md-4" data-controller="map"
+            id="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+            style="margin-left: 20px;"
+            >
           </div>
         </div>
-      </div>
         <%# <div class="actions"> %>
           <%# <%= form.submit class: "btn"%>
         <%# </div> %>
@@ -87,13 +84,14 @@
 
   <div class="d-flex justify-content-between">
     <% if current_user.inspector? %>
-        <%= link_to 'Edit Company', edit_company_path(@company), class: 'btn-big-dark' %>
         <%= link_to 'Delete', company_path(@company), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn-big-dark' %>
+
+        <%= link_to 'Edit Company', edit_company_path(@company), class: 'btn-big' %>
     <% end %>
   </div>
   </div>
   <div class="container mt-5">
-  <h1 class="mb-3">Reports</h1>
+  <h2>Reports</h2>
   <div class="row">
     <table class="table table-striped mt-5">
       <thead>
@@ -133,7 +131,7 @@
     </div>
     <div class="justify-content-end">
       <% if current_user.inspector? %>
-        <%= link_to 'Create report', new_company_report_path(@company), class: 'btn-big-dark' %>
+        <%= link_to 'Create report', new_company_report_path(@company), class: 'btn-big' %>
       <% end %>
     </div>
   </div>
