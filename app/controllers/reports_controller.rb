@@ -45,7 +45,7 @@ class ReportsController < ApplicationController
     @company = Company.find(params[:company_id])
     authorize @report
     @report_questions = []
-    @report.report_questions.each { |report_question| @report_questions << report_question if report_question.id < 4 }
+    @report.report_questions.each { |report_question| @report_questions << report_question if report_question.question_id < 4 }
   end
 
   def fire_training
@@ -53,7 +53,7 @@ class ReportsController < ApplicationController
     @company = Company.find(params[:company_id])
     authorize @report
     @report_questions = []
-    @report.report_questions.each { |report_question| @report_questions << report_question if report_question.id > 3 && report_question.id < 9 }
+    @report.report_questions.each { |report_question| @report_questions << report_question if report_question.question_id > 3 && report_question.question_id < 9 }
   end
 
   def fire_extinguishers
@@ -61,7 +61,7 @@ class ReportsController < ApplicationController
     @company = Company.find(params[:company_id])
     authorize @report
     @report_questions = []
-    @report.report_questions.each { |report_question| @report_questions << report_question if report_question.id > 8 }
+    @report.report_questions.each { |report_question| @report_questions << report_question if report_question.question_id > 8 }
   end
 
   def edit
