@@ -11,6 +11,7 @@
             <th scope="col">Recommendation</th>
             <th scope="col">Priority</th>
             <th scope="col">Date</th>
+            <th scope="col">Completed?</th>
           </tr>
         </thead>
         <tbody>
@@ -18,8 +19,8 @@
           <% @report_questions.sort.each do |report_q| %>
             <tr>
               <th scope="row"><%= num += 1 %></th>
-              <td><%= report_q.fault %></td>
-              <td><%= report_q.recommendation %></td>
+              <td class="p-3"><%= report_q.fault %></td>
+              <td class="p-3"><%= report_q.recommendation %></td>
               <% if report_q.priority == "HIGH" %>
                 <td class="bg-danger">HIGH</td>
               <% elsif report_q.priority == "MEDIUM" %>
@@ -29,7 +30,19 @@
               <% else %>
                 <td></td>
               <% end %>
-              <td><%= report_q.date %></td>
+              <%= form_with model: [@company, @report, report_q] do |f| %>
+              <td>
+                <%= f.date_field :date, data: { controller: "flatpickr", flatpickr_date_format: "Y-m-d", flatpickr_min_date: Time.zone.now } %>
+              </td>
+              <td>
+                <div class="form-check form-switch  ms-4">
+                  <%= f.check_box :answer, class: "form-check-input",  type: "checkbox", id: "flexSwitchCheckDefault", data: { action: "change->question-card#hideContent" }%>
+                </div>
+              </td>
+              <td class="p-3">
+                <%= f.submit "Update Action", class: "btn"%>
+              </td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>
