@@ -5,12 +5,12 @@ class CompaniesController < ApplicationController
   def index
     @companies = policy_scope(Company)
     @companies = Company.all unless @companies
-    if params[:query].present?
+    if params[:query].present? && !params[:query].empty?
       @companies = @companies.where("name ILIKE ?", "%#{params[:query]}%")
-      respond_to do |format|
-        format.html
-        format.json { render json: @companies }
-      end
+    end
+    respond_to do |format|
+      format.html
+      format.text { render partial: "companies/list", locals: {companies: @companies}, formats: [:html] }
     end
 
     @markers = @companies.geocoded.map do |company|
