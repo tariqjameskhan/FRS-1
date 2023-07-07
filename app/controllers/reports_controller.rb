@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-  before_action :set_company, only: [:new, :create, :edit, :update, :show]
+  before_action :set_company, only: [:new, :create, :edit, :update, :show, :destroy]
 
   def new
     @report = Report.new
@@ -78,6 +78,16 @@ class ReportsController < ApplicationController
       redirect_to action_plan_path(@company, @report)
     else
       render :edit
+    end
+  end
+
+  def destroy
+    @report = Report.find(params[:id])
+    authorize @report
+    if @report.destroy
+      redirect_to company_path(@report.company), status: :see_other
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
