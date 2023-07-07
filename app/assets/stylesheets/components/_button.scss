@@ -14,6 +14,7 @@
   background-color: orangered;
   color: white;
   text-decoration: none;
+  transition: all 0.5s ease;
 }
 
 .button-secondary {
@@ -43,6 +44,11 @@
   color: azure;
 }
 
+.btn:hover{
+  background-color: orange;
+}
+
+
 .btn-big {
   display: inline-flex;
   flex-direction: column;
@@ -58,8 +64,9 @@
 }
 
 .btn-big:hover {
-  color: black;
+  color:azure;
   text-decoration: none;
+  background-color: orange;
 }
 
 .btn-big-dark {

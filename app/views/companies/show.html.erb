@@ -13,11 +13,10 @@
           </ul>
         </div>
       <% end %>
-      <div class="container">
         <div class="d-inline-flex justify-content-between ms-5 p-3 mt-5">
           <div class="col-md-8">
             <div class="form-group textOnInput">
-              <%= form.label :name %>
+              <%= form.label :name, "Company Name" %>
               <%= form.text_field :name, class: "free-text-input", readonly: true %>
             </div>
             <div class="form-group textOnInput">
@@ -42,7 +41,6 @@
             </div>
           </div>
         </div>
-      </div>
         <%# <div class="actions"> %>
           <%# <%= form.submit class: "btn"%>
         <%# </div> %>
@@ -87,13 +85,14 @@
 
   <div class="d-flex justify-content-between">
     <% if current_user.inspector? %>
-        <%= link_to 'Edit Company', edit_company_path(@company), class: 'btn-big-dark' %>
         <%= link_to 'Delete', company_path(@company), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn-big-dark' %>
+
+        <%= link_to 'Edit Company', edit_company_path(@company), class: 'btn-big' %>
     <% end %>
   </div>
   </div>
   <div class="container mt-5">
-  <h1 class="mb-3">Reports</h1>
+  <h2>Reports</h2>
   <div class="row">
     <table class="table table-striped mt-5">
       <thead>
@@ -133,7 +132,7 @@
     </div>
     <div class="justify-content-end">
       <% if current_user.inspector? %>
-        <%= link_to 'Create report', new_company_report_path(@company), class: 'btn-big-dark' %>
+        <%= link_to 'Create report', new_company_report_path(@company), class: 'btn-big' %>
       <% end %>
     </div>
   </div>
