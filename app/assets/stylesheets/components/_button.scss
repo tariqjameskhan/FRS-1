@@ -124,3 +124,22 @@
 .delete-button:hover {
   background-color: #d32f2f; /* Darken background on hover */
 }
+
+.btn-login {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #69ab3e;  /* Slightly different color tone */
+  padding: 16px 50px;
+  border: none;
+  border-radius: 100px;
+  color: azure;
+  text-decoration: none;
+}
+
+.btn-login:hover {
+  color: azure;
+  text-decoration: none;
+  background-color: #97ba2f;  /* Different hover color */
+}
