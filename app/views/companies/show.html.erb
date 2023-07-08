@@ -15,7 +15,7 @@
       <% end %>
         <div class="d-inline-flex justify-content-between ms-5 p-3 mt-5">
           <div class="col-md-12">
-            <div class="form-group textOnInput">
+            <div class="form-group textOnInput mt-3">
               <%= form.label :name, "Company Name" %>
               <%= form.text_field :name, class: "free-text-input-big", readonly: true %>
             </div>
@@ -82,7 +82,7 @@
             <td></td>
             <% end %>
             <td><%= link_to 'View', company_report_path(@company, report), class: "btn"%></td>
-            <td><%= link_to 'X', company_report_path(@company, report), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "delete-button" %></td>
+            <td><%= link_to '<i class="fas fa-trash"></i>'.html_safe, company_report_path(@company, report), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "delete-button" %></td>
           </tr>
         <% end %>
       </tbody>

@@ -112,17 +112,13 @@
 .delete-button {
   display: inline-block;
   padding: 5px 10px;
-  background-color: #f44336; /* Red background */
-  color: #ffffff; /* White text */
+  background-color: transparent;
+  color: black; /* White text */
   text-decoration: none; /* Remove underline */
   text-align: center;
   border-radius: 5px; /* Rounded corners */
   font-weight: bold; /* Bold text */
   transition: background-color 0.3s; /* Smooth transition */
-}
-
-.delete-button:hover {
-  background-color: #d32f2f; /* Darken background on hover */
 }
 
 .btn-login {
