@@ -48,10 +48,10 @@
           <div class="col-md-12">
             <h2>Jump to Report Category</h2>
             <br>
-                  <%= link_to 'Action plan', action_plan_path(@company, @report), class: 'btn-big' %>
-                  <%= link_to 'Fire Alarm', fire_alarm_path(@company, @report), class: 'btn-big'%>
-                  <%= link_to 'Fire Training', fire_training_path(@company, @report), class: 'btn-big' %>
-                  <%= link_to 'Fire Extinguishers', fire_extinguishers_path(@company, @report), class: 'btn-big' %>
+                  <%= link_to 'Action plan', action_plan_path(@company, @report), class: 'button-5' %>
+                  <%= link_to 'Fire Alarm', fire_alarm_path(@company, @report), class: 'button-5'%>
+                  <%= link_to 'Fire Training', fire_training_path(@company, @report), class: 'button-5' %>
+                  <%= link_to 'Fire Extinguishers', fire_extinguishers_path(@company, @report), class: 'button-5' %>
           </div>
         </div>
 
@@ -113,7 +113,7 @@
       <% end %>
       <% num = -1 %>
       <%= form_with model: [@company, @report] do |p| %>
-        <div class="form-group textOnInput mt-3">
+        <div class="form-group textOnInput mt-">
             <%= p.label :construction_details %>
             <%= p.text_area :construction_details, cols: 115, rows: 6, class: "free-text-input" %>
         </div>
