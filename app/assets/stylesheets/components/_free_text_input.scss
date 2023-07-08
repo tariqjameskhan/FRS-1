@@ -89,3 +89,8 @@ input[readonly] {
   margin-right: 50px;
   max-width: 500px;
 }
+
+.form-check-input:checked {
+  background-color: #DD851E;
+  border-color: transparent;
+}
