@@ -12,6 +12,14 @@
                         required: true,
                         autofocus: true,
                         input_html: { autocomplete: "email" }%>
+                  <% if @user.avatar.attached? %>
+            <%= cl_image_tag @user.avatar.key, :height=>150, :width=>150, :crop=>"fill", :class=>"rounded-circle" %>
+            <% end %>
+            <%= f.label :new_avatar? %>
+            <%= f.file_field :avatar,
+                        required: false,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
             <%= f.input :client,
                         required: true,
                         autofocus: true,

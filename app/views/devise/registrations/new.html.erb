@@ -17,6 +17,11 @@
                         required: true,
                         autofocus: true,
                         input_html: { autocomplete: "email" }%>
+            <%= f.label :Please_upload_an_avatar! %>
+            <%= f.file_field :avatar,
+                        required: false,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
               <div class="form-check form-switch">
                 <%= f.label :client, class: "form-check-label",  for: "flexSwitchCheckDefault" %>
                 <%= f.check_box :client,
