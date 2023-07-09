@@ -16,9 +16,14 @@ class ReportQuestionsController < ApplicationController
     end
   end
 
+  def show
+    @report = Report.find(params[:id])
+    # @report_question = @report.report_questions.find_by(id: params[:question_id])
+  end
+
   private
 
   def report_question_params
-    params.require(:report_question).permit(:answer, :fault, :recommendation, :priority, :date)
+    params.require(:report_question).permit(:answer, :fault, :recommendation, :priority, :date, photos: [])
   end
 end
