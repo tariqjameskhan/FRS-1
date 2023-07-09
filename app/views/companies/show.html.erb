@@ -82,7 +82,10 @@
             <td></td>
             <% end %>
             <td><%= link_to 'View', company_report_path(@company, report), class: "btn"%></td>
-            <td><%= link_to 'X', company_report_path(@company, report), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "delete-button" %></td>
+            <td> <%= link_to company_report_path(@company, report), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete-button" do %>
+              <i class="fas fa-trash"></i>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
