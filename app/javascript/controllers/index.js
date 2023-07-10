@@ -10,6 +10,9 @@ application.register("hello", HelloController)
 import InsertInListController from "./insert_in_list_controller"
 application.register("insert-in-list", InsertInListController)
 
+import InsertInList2Controller from "./insert_in_list2_controller"
+application.register("insert-in-list2", InsertInList2Controller)
+
 import MapController from "./map_controller"
 application.register("map", MapController)
 

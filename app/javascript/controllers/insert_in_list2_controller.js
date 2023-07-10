@@ -7,7 +7,7 @@ export default class extends Controller {
   connect() {
     console.log("I am inserting list 2 controller")
     this.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content")
-  }
+      }
 
   send(event) {
     event.preventDefault()

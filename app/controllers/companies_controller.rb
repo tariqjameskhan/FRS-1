@@ -23,6 +23,16 @@ class CompaniesController < ApplicationController
 
   def show
     authorize(@company)
+    @reports = @company.reports unless @reports
+    if params[:query].present? && !params[:query].empty?
+      @reports = @company.reports.where("premises_name ILIKE ?", "%#{params[:query]}%")
+    end
+      respond_to do |format|
+        format.html
+        format.text { render partial: "companies/list2", locals: {reports: @reports}, formats: [:html] }
+      end
+
+
     @markers = [{
       lat: @company.latitude,
       lng: @company.longitude

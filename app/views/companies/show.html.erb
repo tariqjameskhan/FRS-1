@@ -1,4 +1,5 @@
 
+
 <div class="container mt-5">
   <h1><%= @company.name %></h1>
 
@@ -52,8 +53,32 @@
     <% end %>
   </div>
   </div>
-  <div class="container mt-5">
-  <h2>Reports</h2>
+
+  <div data-controller="insert-in-list">
+   <div class="container mt-5" >
+  <div class="row justify-content-between" style="margin-top: 120px;">
+      <div class="col-lg-6">
+        <h1 class="mb-3">Reports</h1>
+      </div>
+      <div class="col-lg-6 justify-content-end">
+        <div class="row justify-content-end">
+         <%= form_with url: company_path, method: :get, class: "d-flex", data: { insert_in_list_target: "form", action: "submit->insert-in-list#send" }, remote: true do %>
+          <%= text_field_tag :query,
+              params[:query],
+              class: "form-control ml-2",
+              style: "margin-left: auto; width: 400px; margin-right: 20px",
+              placeholder: "Type a premise",
+              data: {
+                    insert_in_list_target: 'searchInput'
+                  }
+          %>
+          <%= submit_tag "Search", name: "", class: "btn",  style: "margin-right: 40px" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
   <div class="row">
     <table class="table table-striped mt-5">
       <thead>
@@ -67,7 +92,10 @@
           <th scope="col"></th>
         </tr>
       </thead>
-      <tbody>
+
+      <%= render 'list2', reports: @reports %>
+
+<!--       <tbody>
         <% num = 0 %>
         <% @company.reports.each do |report| %>
           <tr>
@@ -88,17 +116,20 @@
             </td>
           </tr>
         <% end %>
-      </tbody>
+      </tbody> -->
+
     </table>
   </div>
+
   <div class="d-flex justify-content-between mt-4">
     <div>
       <%= link_to 'Back to Companies', companies_path, class: 'btn-big-dark' %>
     </div>
     <div class="justify-content-end">
       <% if current_user.inspector? %>
-        <%= link_to 'Create report', new_company_report_path(@company), class: 'btn-big' %>
+        <%= link_to 'Create report', new_company_report_path(@company), class: 'btn-big-dark' %>
       <% end %>
     </div>
   </div>
+</div>
 </div>
