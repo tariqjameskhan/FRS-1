@@ -1,88 +1,108 @@
+
 <div class="container mt-5">
   <h1>Assessment for <%= @report.premises_name %></h1>
-  <div class="d-inline-flex mt-3">
-    <div class="p-3">
-      <p>Date of assessment</p>
-      <p class="free-text-input">
-      <% if  @report.date_report_completed? %>
-      <%= @report.date_report_completed %>
-      <% else %>
-      01/01/2000
-      <% end %></p>
-    </div>
-    <div class="p-3">
-      <p>Name of Assessor</p>
-      <p class="free-text-input"><%= @report.company.inspector.first_name %> <%= @report.company.inspector.last_name %></p>
-    </div>
-    <div class="p-3 mt-5">
-      <%= link_to 'Action plan', action_plan_path(@company, @report), class: 'btn-big' %>
-    </div>
-    <div class="p-3 mt-5 ms-4">
-      <%= link_to 'Fire Alarm', fire_alarm_path(@company, @report), class: 'btn-big-dark', id: "red" %>
-    </div>
-    <div class="p-3 mt-5 ms-4">
-      <%= link_to 'Fire Training', fire_training_path(@company, @report), class: 'btn-big-dark', id: "blue" %>
-    </div>
-  </div>
-  <h2>Address</h2>
-  <div class="d-inline-flex">
-    <div class="p-3">
-      <p>Street address</p>
-      <p class="free-text-input"><%= @report.street_address %></p>
-    </div>
-    <div class="p-3">
-      <p>City</p>
-      <p class="free-text-input"><%= @report.city %></p>
-    </div>
-    <div class="p-3">
-      <p>Postcode</p>
-      <p class="free-text-input"><%= @report.postcode %></p>
-    </div>
-    <div class="p-3 mt-5 ms-4">
-      <%= link_to 'Fire Extinguishers', fire_extinguishers_path(@company, @report), class: 'btn-big-dark', id: "green" %>
-    </div>
-  </div>
-  <div class="col-lg-6 mt-5 mb-5">
-    <div class="map" data-controller="map"
-              id="map"
-              data-map-markers-value="<%= @markers.to_json %>"
-              data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-              >
-    </div>
-  </div>
-  <% if @report.photos.any? %>
-    <h2>Photos</h2>
-    <div class="d-inline-flex mt-1">
-      <% @report.photos.each do |photo| %>
-        <div class="m-4">
-          <%= cl_image_tag photo.key, width: 200, height: 200, crop: :fill %>
+
+    <%= form_with(model: [@company, @report], data: { insert_in_list_target: "form", action: "submit->insert-in-list#send" }, local: true) do |form| %>
+      <% if @report.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@report.errors.count, "error") %> prohibited this post from being saved:</h2>
+          <ul>
+          <% @report.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
         </div>
       <% end %>
-    </div>
+        <div class="d-inline-flex justify-content-between ms-5 p-3 mt-5">
+          <div class="col-md-12">
+
+            <div class="form-group textOnInput mt-3">
+              <%= form.label :date_report_completed, "Date of Assessment" %>
+              <% if @report.date_report_completed.present? %>
+                <%= form.text_field :date_report_completed, class: "free-text-input-big", readonly: true %>
+              <% else %>
+                <p class="free-text-input">01/01/2000</p>
+              <% end %>
+            </div>
+
+            <div class="form-group textOnInput mt-3">
+              <%= form.label :inspector, "Assessor" %>
+              <%= form.text_field :inspector, value: "#{@report.company.inspector.first_name}" "#{@report.company.inspector.last_name}", class: "free-text-input-big", readonly: true %>
+            </div>
+
+            <div class="form-group textOnInput mt-3">
+              <%= form.label :address %>
+              <%= form.text_field :address, value: "#{@report.street_address}, #{@report.city}, #{@report.postcode}", class: "free-text-input-big", readonly: true %>
+            </div>
+          </div>
+          <div class="map col-md-4" data-controller="map"
+            id="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+            style="margin-left: 20px;"
+            >
+          </div>
+        </div>
+
+        <div class="d-inline-flex justify-content-between ms-5 p-3 mt-5">
+          <div class="col-md-12">
+            <h2>Jump to Report Category</h2>
+            <br>
+                  <%= link_to 'Action plan', action_plan_path(@company, @report), class: 'button-5' %>
+                  <%= link_to 'Fire Alarm', fire_alarm_path(@company, @report), class: 'button-5'%>
+                  <%= link_to 'Fire Training', fire_training_path(@company, @report), class: 'button-5' %>
+                  <%= link_to 'Fire Extinguishers', fire_extinguishers_path(@company, @report), class: 'button-5' %>
+          </div>
+        </div>
+
+        <div class="d-inline-flex justify-content-between ms-5 p-3 mt-5">
+          <div class="col-md-12">
+            <h2>Responsible Person</h2>
+
+              <div class="form-group textOnInput mt-3">
+                <%= form.label  :name, "Full Name" %>
+                <%= form.text_field :name, value: "#{@report.company.client.first_name}" "#{@report.company.client.last_name}", class: "free-text-input-big", readonly: true %>
+              </div>
+
+              <div class="form-group textOnInput mt-3">
+                <%= form.label :telephone_number,  "Phone Number" %>
+                <%= form.text_field :inspector, value: "#{@report.company.client.telephone_number}", class: "free-text-input-big", readonly: true %>
+              </div>
+
+              <div class="form-group textOnInput mt-3">
+                <%= form.label :email_address %>
+                <%= form.text_field :email_address, value: "#{@report.company.client.email}", class: "free-text-input-big", readonly: true  %>
+            </div>
+
+            <% if @report.photos.any? %>
+            <br>
+            <h2>Photos</h2>
+            <div class="d-inline-flex mt-1">
+              <% @report.photos.each do |photo| %>
+                <div class="col md-12">
+                  <%= cl_image_tag photo.key, width: 200, height: 200, crop: :fill %>
+                </div>
+              <% end %>
+            </div>
+            <% end %>
+
   <% end %>
-  <h2>Responsible Person</h2>
-  <div class="d-inline-flex">
-    <div class="p-3">
-      <p>Full name</p>
-      <p class="free-text-input"><%= @report.company.client.first_name %> <%= @report.company.client.last_name %></p>
-    </div>
-    <div class="p-3">
-      <p>Phone number</p>
-      <p class="free-text-input"><%= @report.company.client.telephone_number %></p>
-    </div>
-    <div class="p-3">
-      <p>Email</p>
-      <p class="free-text-input"><%= @report.company.client.email %></p>
-    </div>
   </div>
-  <h2 class="mt-4 mb-4">Construction Details</h2>
-  <div>
-    <div class="m-3">
+</div>
+
+<div class="d-inline-flex justify-content-between ms-5 p-3 mt-5">
+<div class="col-md-12">
+
+  <h2>Construction Details</h2>
+
+    <div>
       <% @names = [] %>
       <% @fault_array = [] %>
       <% @recommendation_array = [] %>
+      <% @photos_array = [] %>
       <% @report_questions.sort.each do |report_q| %>
         <% @names << report_q.question.question_name %>
+        <% @photos_array << report_q.photos %>
         <% @faults = report_q.question.faults %>
         <% @fault_names = [" "] %>
         <% @fault_recommendations = [" "] %>
@@ -95,7 +115,7 @@
       <% end %>
       <% num = -1 %>
       <%= form_with model: [@company, @report] do |p| %>
-        <div class="form-group textOnInput mt-5">
+        <div class="form-group textOnInput mt-">
             <%= p.label :construction_details %>
             <%= p.text_area :construction_details, cols: 115, rows: 6, class: "free-text-input" %>
         </div>
@@ -113,7 +133,7 @@
             <%= p.file_field :photos, multiple: true, class: "free-text-input bg-white btn" %>
           </div>
         </div>
-        <h2 class="mt-4 mb-4">Report</h2>
+        <h2>Report</h2>
         <%= p.fields_for :report_questions, @report.report_questions.sort do |f| %>
           <%# <%= f.text_field :question_id %>
           <% num += 1 %>
@@ -143,24 +163,28 @@
             </div>
           </div>
           <div class="d-flex mt-4">
+            <div class="form-group textOnInput">
+              <%= f.label :priority %>
+              <%= f.select :priority, [" ", "HIGH", "MEDIUM", "LOW"], class: "" %>
+            </div>
+            <div class="form-group textOnInput">
+              <%= f.label :date %>
+              <%= f.date_field :date, class: "free-text-input", data: { controller: "flatpickr", flatpickr_date_format: "Y-m-d", flatpickr_min_date: Time.zone.now } %>
+            </div>
+            <div class="d-inline-flex">
               <div class="form-group textOnInput">
-                <%= f.label :priority %>
-                <%= f.select :priority, [" ", "HIGH", "MEDIUM", "LOW"], class: "" %>
-              </div>
-              <div class="form-group textOnInput">
-                <%= f.label :date %>
-                <%= f.date_field :date, class: "free-text-input", data: { controller: "flatpickr", flatpickr_date_format: "Y-m-d", flatpickr_min_date: Time.zone.now } %>
-              </div>
-              <div class="d-inline-flex">
-                <%# <div class="form-group textOnInput">
-                  <%= form.label :photos %>
-                  <%# <%= form.file_field :photos, multiple: true, class: "free-text-input bg-white btn" %>
-                <%# </div> %>
-                <div class="mt-2">
-                  <h1><strong>+</strong></h1>
-                </div>
+                <%= f.label :photos %>
+                <%= f.file_field :photos, multiple: true, class: "free-text-input bg-white btn" %>
               </div>
             </div>
+          <div class="mt-2">
+            <h1><strong>+</strong></h1>
+            <h3> Report Photos</h3>
+            <% @photos_array[num].each do |photo| %>
+              <%= cl_image_tag photo.key, width: 200, height: 200, crop: :fill %>
+            <% end %>
+          </div>
+        </div>
         <% end %>
         <div data-controller="submit-all-forms">
           <div class="d-flex justify-content-between mt-5">

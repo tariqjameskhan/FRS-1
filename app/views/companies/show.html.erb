@@ -92,7 +92,32 @@
           <th scope="col"></th>
         </tr>
       </thead>
+
       <%= render 'list2', reports: @reports %>
+
+<!--       <tbody>
+        <% num = 0 %>
+        <% @company.reports.each do |report| %>
+          <tr>
+            <th scope="row"><%= num += 1 %></th>
+            <td><%= report.premises_name %></td>
+            <td><%= report.street_address %></td>
+            <td><%= report.telephone_number %></td>
+            <td><%= report.date_report_completed %></td>
+            <% if current_user.inspector? %>
+            <td><%= link_to 'Edit', edit_company_report_path(@company, report), class: "btn"%></td>
+            <% else %>
+            <td></td>
+            <% end %>
+            <td><%= link_to 'View', company_report_path(@company, report), class: "btn"%></td>
+            <td> <%= link_to company_report_path(@company, report), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete-button" do %>
+              <i class="fas fa-trash"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody> -->
+
     </table>
   </div>
 

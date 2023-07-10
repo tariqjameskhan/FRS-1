@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :inspected_companies, class_name: 'Company', foreign_key: 'inspector_id'
   has_many :client_companies, class_name: 'Company', foreign_key: 'client_id'
+  has_one_attached :avatar
 end
