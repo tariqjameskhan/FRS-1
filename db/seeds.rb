@@ -183,8 +183,7 @@ num = 0
 puts "popluating faults and recommendations"
 ############################# Question 1 ############################
 puts "working on question number 1"
-fault = Fault.new(fault_detail: "The fire alarm system is not operational
-  ", recommendation: "The fire alarm system must be reinstated as soon as possible and recommisioned by a competant engineer")
+fault = Fault.new(fault_detail: "The fire alarm system is not operational", recommendation: "The fire alarm system must be reinstated as soon as possible and recommisioned by a competant engineer")
 question = Question.find(1)
 fault.question = question
 fault.save!

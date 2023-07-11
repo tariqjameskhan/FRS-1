@@ -2,12 +2,12 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="submit-all-forms"
 export default class extends Controller {
-  static targets = ["button", "form"]
+  // static targets = ["form"]
 
   connect() {
     console.log("i am connected to the submit all forms controller")
-    console.log("my form", this.formTarget )
-    console.log("my button", this.buttonTarget )
+    // console.log("my form", this.formTarget )
+    // console.log("my button", this.buttonTarget )
     // this.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content")
   }
 
