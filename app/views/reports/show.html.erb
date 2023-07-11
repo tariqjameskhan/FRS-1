@@ -178,10 +178,12 @@
               </div>
             </div>
               <br>
-              <div class="mt-2">
+              <div class="mt-2 d-inline-flex">
                 <% @photos_array[num].each do |photo| %>
                   <% if photo %>
-                    <%= cl_image_tag photo.key, width: 200, height: 200, crop: :fill %>
+                    <div class="me-5">
+                      <%= cl_image_tag photo.key, width: 200, height: 200, crop: :fill %>
+                    </div>
                   <% end %>
                 <% end %>
               </div>
