@@ -177,14 +177,14 @@
                 </div>
               </div>
             </div>
-            <% if @report.photos.any? %>
               <br>
               <div class="mt-2">
                 <% @photos_array[num].each do |photo| %>
-                  <%= cl_image_tag photo.key, width: 200, height: 200, crop: :fill %>
+                  <% if photo %>
+                    <%= cl_image_tag photo.key, width: 200, height: 200, crop: :fill %>
+                  <% end %>
                 <% end %>
               </div>
-            <% end %>
           <% end %>
         </div>
 
