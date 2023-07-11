@@ -114,7 +114,7 @@
         <% @recommendation_array << @fault_recommendations %>
       <% end %>
       <% num = -1 %>
-      <%= form_with model: [@company, @report] do |p| %>
+      <%= form_with model: [@company, @report], id: "myform" do |p| %>
         <div class="form-group textOnInput mt-">
             <%= p.label :construction_details %>
             <%= p.text_area :construction_details, cols: 115, rows: 6, class: "free-text-input" %>
@@ -190,14 +190,14 @@
           <% end %>
         </div>
 
-        <div data-controller="submit-all-forms">
+        <div>
           <div class="d-flex justify-content-between mt-5">
             <div>
               <%= link_to 'Back to Company', company_path(@report.company), class: 'btn-big-dark' %>
             </div>
             <div class="justify-content-end">
               <% if current_user.inspector? %>
-                <%= p.submit class: "btn-big"%>
+                <%= p.submit class: "btn-big", form: "myform"%>
               <% else %>
                 <%= link_to 'Action plan', action_plan_path(@company, @report), class: 'btn-big' %>
               <% end %>
