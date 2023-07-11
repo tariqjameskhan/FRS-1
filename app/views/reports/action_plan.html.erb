@@ -30,18 +30,19 @@
               <% else %>
                 <td></td>
               <% end %>
-              <%= form_with model: [@company, @report, report_q] do |f| %>
-              <td>
-                <%= f.date_field :date, data: { controller: "flatpickr", flatpickr_date_format: "Y-m-d", flatpickr_min_date: Time.zone.now } %>
-              </td>
-              <td>
-                <div class="form-check form-switch  ms-4">
-                  <%= f.check_box :answer, class: "form-check-input",  type: "checkbox", id: "flexSwitchCheckDefault", data: { action: "change->question-card#hideContent" }%>
-                </div>
-              </td>
-              <td class="p-3">
-                <%= f.submit "Update Action", class: "btn-big"%>
-              </td>
+              <%# <%= form_with model: [@company, @report, report_q], method: :patch, id: "myform" do |f| %> %>
+              <%= simple_form_for [@company, @report, report_q] do |f| %>
+                <td>
+                  <%= f.date_field :date, data: { controller: "flatpickr", flatpickr_date_format: "Y-m-d", flatpickr_min_date: Time.zone.now } %>
+                </td>
+                <td>
+                  <div class="form-check form-switch  ms-4">
+                    <%= f.check_box :answer, class: "form-check-input",  type: "checkbox", id: "flexSwitchCheckDefault" %>
+                  </div>
+                </td>
+                <td class="p-3">
+                  <%= f.submit "Update Action", class: "btn" %>
+                </td>
               <% end %>
             </tr>
           <% end %>

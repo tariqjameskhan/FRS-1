@@ -113,6 +113,7 @@
         <% @fault_array << @fault_names %>
         <% @recommendation_array << @fault_recommendations %>
       <% end %>
+      <%= @fault_array %>
       <% num = -1 %>
       <%= form_with model: [@company, @report] do |p| %>
         <div class="form-group textOnInput mt-">
