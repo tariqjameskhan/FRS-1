@@ -112,7 +112,7 @@ class ReportsController < ApplicationController
       :construction_details,
       :number_of_floors,
       :floor_area,
-      photos: [],
+      { photos: [] },
       report_questions_attributes: [:id, :answer, :fault, :recommendation, :date, :priority, :question_id, photos: []]
     )
   end

@@ -27,7 +27,7 @@
 
             <div class="form-group textOnInput mt-3">
               <%= form.label :inspector, "Assessor" %>
-              <%= form.text_field :inspector, value: "#{@report.company.inspector.first_name}" "#{@report.company.inspector.last_name}", class: "free-text-input-big", readonly: true %>
+              <%= form.text_field :inspector, value: "#{@report.company.inspector.first_name} " "#{@report.company.inspector.last_name}", class: "free-text-input-big", readonly: true %>
             </div>
 
             <div class="form-group textOnInput mt-3">
@@ -61,7 +61,7 @@
 
               <div class="form-group textOnInput mt-3">
                 <%= form.label  :name, "Full Name" %>
-                <%= form.text_field :name, value: "#{@report.company.client.first_name}" "#{@report.company.client.last_name}", class: "free-text-input-big", readonly: true %>
+                <%= form.text_field :name, value: "#{@report.company.client.first_name} " "#{@report.company.client.last_name}", class: "free-text-input-big", readonly: true %>
               </div>
 
               <div class="form-group textOnInput mt-3">
@@ -79,7 +79,7 @@
               <h2>Photos</h2>
               <div class="d-inline-flex mt-1">
                 <% @report.photos.each do |photo| %>
-                  <div class="col md-12">
+                  <div class="me-5">
                     <%= cl_image_tag photo.key, width: 200, height: 200, crop: :fill %>
                   </div>
                 <% end %>
@@ -93,7 +93,7 @@
 <div class="d-inline-flex justify-content-between ms-5 p-3 mt-5">
 <div class="col-md-12">
 
-  <h2>Construction Details</h2>
+  <h2 class="mb-4">Construction Details</h2>
 
     <div>
       <% @names = [] %>
