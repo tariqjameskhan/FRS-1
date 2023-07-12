@@ -30,18 +30,20 @@
               <% else %>
                 <td></td>
               <% end %>
-              <%# <%= form_with model: [@company, @report, report_q], method: :patch, id: "myform" do |f| %>
-              <%= simple_form_for [@company, @report, report_q], id: "myform" do |f| %>
+              <%= form_with model: [@company, @report, report_q], method: :patch, id: "myform" do |f| %>
+              <%# <%= simple_form_for [@company, @report, report_q], id: "myform" do |f| %>
                 <td>
-                  <%= f.date_field :date, data: { controller: "flatpickr", flatpickr_date_format: "Y-m-d", flatpickr_min_date: Time.zone.now } %>
+                  <%= f.date_field :date, data: { controller: "flatpickr", flatpickr_date_format: "Y-m-d", flatpickr_min_date: Time.zone.now }, readonly: current_user.client? ? true : false %>
                 </td>
                 <td>
                   <div class="form-check form-switch  ms-4">
-                    <%= f.check_box :answer, class: "form-check-input",  type: "checkbox", id: "flexSwitchCheckDefault" %>
+                    <%= f.check_box :answer, class: "form-check-input",  type: "checkbox", id: "flexSwitchCheckDefault", readonly: current_user.client? ? true : false %>
                   </div>
                 </td>
                 <td class="p-3">
+                <% if current_user.inspector? %>
                   <%= f.submit "Update Action", class: "btn", form: "myform" %>
+                <% end %>
                 </td>
               <% end %>
             </tr>
