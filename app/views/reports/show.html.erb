@@ -115,7 +115,7 @@
       <% end %>
       <% num = -1 %>
       <%= form_with model: [@company, @report], id: "myform" do |p| %>
-        <div class="form-group textOnInput mt-">
+        <div class="form-group textOnInput">
             <%= p.label :construction_details %>
             <%= p.text_area :construction_details, cols: 115, rows: 6, class: "free-text-input" %>
         </div>
@@ -145,39 +145,49 @@
                   <div class="form-check form-switch">
                     <%# <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" data-action="change->question-card#hideContent"> %>
                     <%# <label class="form-check-label" for="flexSwitchCheckDefault">dud</label> %>
-                    <%= f.label :answer, class: "form-check-label",  for: "flexSwitchCheckDefault" %>
+                    <%= f.label :answer,"Yes", class: "form-check-label",  for: "flexSwitchCheckDefault" %>
                     <%= f.check_box :answer, class: "form-check-input",  type: "checkbox", id: "flexSwitchCheckDefault", data: { action: "change->question-card#hideContent" }%>
                   </div>
                 </div>
               </div>
-              <div class="d-flex mt-3", data-question-card-target="contents">
-                  <div class="form-group textOnInput">
-                    <%= f.label :fault %>
-                    <%= f.select :fault, @fault_array[num], class: "" %>
+              <div data-question-card-target="contents">
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group textOnInput">
+                      <%= f.label :fault %>
+                      <%= f.select :fault, @fault_array[num], class: "" %>
+                    </div>
                   </div>
-                  <div class="form-group textOnInput">
-                    <%= f.label :recommendation %>
-                    <%= f.select :recommendation, @recommendation_array[num], class: "" %>
+                  <div class="col-md-3">
+                    <div class="form-group textOnInput">
+                      <%= f.label :recommendation, "Advice"%>
+                      <%= f.select :recommendation, @recommendation_array[num], class: "" %>
+                    </div>
                   </div>
-              </div>
-            </div>
-            <div class="d-flex mt-4">
-              <div class="form-group textOnInput">
-                <%= f.label :priority %>
-                <%= f.select :priority, [" ", "HIGH", "MEDIUM", "LOW"], class: "" %>
-              </div>
-              <div class="form-group textOnInput">
-                <%= f.label :date %>
-                <%= f.date_field :date, class: "free-text-input", data: { controller: "flatpickr", flatpickr_date_format: "Y-m-d", flatpickr_min_date: Time.zone.now } %>
-              </div>
-              <div class="d-inline-flex">
-                <div class="form-group textOnInput">
-                  <%= f.label :photos %>
-                  <%= f.file_field :photos, multiple: true, class: "free-text-input bg-white btn" %>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group textOnInput">
+                      <%= f.label :priority %>
+                      <%= f.select :priority, [" ", "HIGH", "MEDIUM", "LOW"], class: "" %>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="form-group textOnInput">
+                        <%= f.label :date %>
+                        <%= f.date_field :date, class: "free-text-input", data: { controller: "flatpickr", flatpickr_date_format: "Y-m-d", flatpickr_min_date: Time.zone.now } %>
+                      </div>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="form-group textOnInput">
+                        <%= f.label :photos %>
+                        <%= f.file_field :photos, multiple: true, class: "free-text-input bg-white btn-photos" %>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-              <br>
+
               <div class="mt-2 d-inline-flex">
                 <% @photos_array[num].each do |photo| %>
                   <% if photo %>
