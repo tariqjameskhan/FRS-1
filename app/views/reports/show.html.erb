@@ -117,20 +117,21 @@
       <%= form_with model: [@company, @report], id: "myform" do |p| %>
         <div class="form-group textOnInput mt-">
             <%= p.label :construction_details %>
-            <%= p.text_area :construction_details, cols: 115, rows: 6, class: "free-text-input" %>
+            <%= p.text_area :construction_details, cols: 115, rows: 6, class: "free-text-input", readonly: current_user.client? ? true : false%>
+
         </div>
         <div class="d-inline-flex">
           <div class="form-group textOnInput">
               <%= p.label :number_of_floors %>
-              <%= p.text_field :number_of_floors, class: "free-text-input" %>
+              <%= p.text_field :number_of_floors, class: "free-text-input", readonly: current_user.client? ? true : false %>
           </div>
           <div class="form-group textOnInput">
               <%= p.label :floor_area %>
-              <%= p.text_field :floor_area, class: "free-text-input" %>
+              <%= p.text_field :floor_area, class: "free-text-input", readonly: current_user.client? ? true : false %>
           </div>
           <div class="form-group textOnInput">
             <%= p.label :photos, "Photos" %>
-            <%= p.file_field :photos, multiple: true, class: "free-text-input bg-white btn" %>
+            <%= p.file_field :photos, multiple: true, class: "free-text-input bg-white btn", readonly: current_user.client? ? true : false %>
           </div>
         </div>
           <h2>Report</h2>
@@ -143,37 +144,47 @@
                 </div>
                 <div class="field d-inline-flex">
                   <div class="form-check form-switch">
-                    <%# <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" data-action="change->question-card#hideContent"> %>
-                    <%# <label class="form-check-label" for="flexSwitchCheckDefault">dud</label> %>
                     <%= f.label :answer, class: "form-check-label",  for: "flexSwitchCheckDefault" %>
-                    <%= f.check_box :answer, class: "form-check-input",  type: "checkbox", id: "flexSwitchCheckDefault", data: { action: "change->question-card#hideContent" }%>
+                    <%= f.check_box :answer, class: "form-check-input",  type: "checkbox", id: "flexSwitchCheckDefault", data: { action: "change->question-card#hideContent" }, readonly: current_user.client? ? true : false%>
                   </div>
                 </div>
               </div>
               <div class="d-flex mt-3", data-question-card-target="contents">
                   <div class="form-group textOnInput">
                     <%= f.label :fault %>
-                    <%= f.select :fault, @fault_array[num], class: "" %>
+                    <% if current_user.client? %>
+                      <%= f.text_area :fault, cols: 60, rows: 3, class: "free-text-input", readonly: true %>
+                    <% else %>
+                      <%= f.select :fault, @fault_array[num] %>
+                    <% end %>
                   </div>
                   <div class="form-group textOnInput">
                     <%= f.label :recommendation %>
-                    <%= f.select :recommendation, @recommendation_array[num], class: "" %>
+                    <% if current_user.client? %>
+                      <%= f.text_area :recommendation, cols: 60, rows: 3, class: "free-text-input", readonly: true %>
+                    <% else %>
+                      <%= f.select :recommendation, @recommendation_array[num], class: "" %>
+                    <% end %>
                   </div>
               </div>
             </div>
             <div class="d-flex mt-4">
               <div class="form-group textOnInput">
                 <%= f.label :priority %>
-                <%= f.select :priority, [" ", "HIGH", "MEDIUM", "LOW"], class: "" %>
+                <% if current_user.client? %>
+                  <%= f.text_area :priority, cols: 10, rows: 1, class: "free-text-input", readonly: true %>
+                <% else %>
+                  <%= f.select :priority, [" ", "HIGH", "MEDIUM", "LOW"], class: "" %>
+                <% end %>
               </div>
               <div class="form-group textOnInput">
                 <%= f.label :date %>
-                <%= f.date_field :date, class: "free-text-input", data: { controller: "flatpickr", flatpickr_date_format: "Y-m-d", flatpickr_min_date: Time.zone.now } %>
+                <%= f.date_field :date, class: "free-text-input", data: { controller: "flatpickr", flatpickr_date_format: "Y-m-d", flatpickr_min_date: Time.zone.now }, readonly: current_user.client? ? true : false %>
               </div>
               <div class="d-inline-flex">
                 <div class="form-group textOnInput">
                   <%= f.label :photos %>
-                  <%= f.file_field :photos, multiple: true, class: "free-text-input bg-white btn" %>
+                  <%= f.file_field :photos, multiple: true, class: "free-text-input bg-white btn", readonly: current_user.client? ? true : false %>
                 </div>
               </div>
             </div>
