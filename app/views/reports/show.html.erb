@@ -141,50 +141,39 @@
                 <div>
                   <h5 class="card-title"><%= @names[num] %></h5>
                 </div>
-                <div class="field d-inline-flex">
                   <div class="form-check form-switch">
                     <%# <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" data-action="change->question-card#hideContent"> %>
                     <%# <label class="form-check-label" for="flexSwitchCheckDefault">dud</label> %>
                     <%= f.label :answer,"Yes", class: "form-check-label",  for: "flexSwitchCheckDefault" %>
                     <%= f.check_box :answer, class: "form-check-input",  type: "checkbox", id: "flexSwitchCheckDefault", data: { action: "change->question-card#hideContent" }%>
                   </div>
-                </div>
               </div>
               <div data-question-card-target="contents">
                 <div class="row">
                   <div class="col-md-3">
-                    <div class="form-group textOnInput">
+                    <div class="form-group textOnInput-bg">
                       <%= f.label :fault %>
                       <%= f.select :fault, @fault_array[num], class: "" %>
                     </div>
                   </div>
-                  <div class="col-md-3">
-                    <div class="form-group textOnInput">
-                      <%= f.label :recommendation, "Advice"%>
-                      <%= f.select :recommendation, @recommendation_array[num], class: "" %>
+                    <div class="form-group textOnInput-bg">
+                      <%= f.label :recommendation %>
+                      <%= f.select :recommendation, @recommendation_array[num] %>
                     </div>
-                  </div>
-                <div class="row">
-                  <div class="col-md-3">
-                    <div class="form-group textOnInput">
+
+                    <div class="form-group textOnInput-bg">
                       <%= f.label :priority %>
                       <%= f.select :priority, [" ", "HIGH", "MEDIUM", "LOW"], class: "" %>
                     </div>
-                  </div>
-                  <div class="col-md-3">
                       <div class="form-group textOnInput">
                         <%= f.label :date %>
                         <%= f.date_field :date, class: "free-text-input", data: { controller: "flatpickr", flatpickr_date_format: "Y-m-d", flatpickr_min_date: Time.zone.now } %>
                       </div>
-                  </div>
-                  <div class="col-md-3">
                       <div class="form-group textOnInput">
                         <%= f.label :photos %>
                         <%= f.file_field :photos, multiple: true, class: "free-text-input bg-white btn-photos" %>
                       </div>
-                    </div>
                   </div>
-                </div>
               </div>
             </div>
 
