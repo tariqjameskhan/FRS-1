@@ -25,5 +25,7 @@ Rails.application.routes.draw do
   get "/companies/:company_id/reports/:id/fire_training", to: "reports#fire_training", as: :fire_training
   get "/companies/:company_id/reports/:id/fire_extinguishers", to: "reports#fire_extinguishers", as: :fire_extinguishers
   get 'profile', to: 'profiles#show'
+  get 'profile/edit', to: 'profiles#edit', as: 'edit_profile'
+  patch 'profile', to: 'profiles#update'
 
 end

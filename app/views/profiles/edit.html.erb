@@ -1,6 +1,7 @@
 <div class="container mt-5">
-  <h1>User Profile</h1>
-  <%= form_with(model: @user, url: user_path(@user), local: true) do |form| %>
+  <h1>Edit Profile</h1>
+
+  <%= form_with(model: @user, url: profile_path, local: true) do |form| %>
     <% if @user.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@user.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -16,27 +17,30 @@
       <div class="col-md-12">
         <div class="form-group textOnInput mt-3">
           <%= form.label :first_name %>
-          <%= form.text_field :first_name, class: "free-text-input-big", readonly: true %>
+          <%= form.text_field :first_name, class: "free-text-input-big" %>
         </div>
         <div class="form-group textOnInput mt-3">
           <%= form.label :last_name %>
-          <%= form.text_field :last_name, class: "free-text-input-big", readonly: true %>
+          <%= form.text_field :last_name, class: "free-text-input-big" %>
         </div>
         <div class="form-group textOnInput mt-3">
           <%= form.label :email %>
-          <%= form.text_field :email, class: "free-text-input-big", readonly: true %>
+          <%= form.text_field :email, class: "free-text-input-big" %>
         </div>
         <div class="form-group textOnInput mt-3">
           <%= form.label :telephone_number %>
-          <%= form.text_field :telephone_number, class: "free-text-input-big", readonly: true %>
+          <%= form.text_field :telephone_number, class: "free-text-input-big" %>
         </div>
+
         <div class="d-flex justify-content-between mt-3">
           <div>
             <%= link_to 'Back', companies_path, class: 'btn-big-dark' %>
           </div>
-        <%= link_to 'Edit Profile', edit_profile_path(@profile), class: "btn-big" %>
-</div>
-
-</div>
+          <div class="justify-content-end">
+            <%= form.submit 'Save Changes', class: 'btn-big' %>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
