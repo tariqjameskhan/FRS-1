@@ -30,7 +30,7 @@
               </div>
               <div class="field d-inline-flex">
                 <div class="form-check form-switch">
-                  <%= f.label :answer, class: "form-check-label",  for: "flexSwitchCheckDefault" %>
+                  <%# <%= f.label :answer, class: "form-check-label",  for: "flexSwitchCheckDefault" %>
                   <%= f.check_box :answer, class: "form-check-input",  type: "checkbox", id: "flexSwitchCheckDefault", data: { action: "change->question-card#hideContent" }, readonly: current_user.client? ? true : false %>
                 </div>
               </div>
@@ -70,7 +70,7 @@
               <div class="d-inline-flex">
               <div class="form-group textOnInput">
                 <%= f.label :photos %>
-                <%= f.file_field :photos, multiple: true, class: "free-text-input bg-white btn", readonly: current_user.client? ? true : false %>
+                <%= f.file_field :photos, multiple: true, class: "free-text-input bg-white btn-photos", readonly: current_user.client? ? true : false %>
               </div>
             </div>
           </div>

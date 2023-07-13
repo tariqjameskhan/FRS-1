@@ -44,6 +44,17 @@
   color: azure;
 }
 
+.btn-photos {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #DD851E;
+  // border: 1px solid #000000;
+  border-radius: 100px;
+  color: black;
+}
+
 .btn:hover{
   background-color: orange;
 }

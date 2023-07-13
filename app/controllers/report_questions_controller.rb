@@ -10,7 +10,7 @@ class ReportQuestionsController < ApplicationController
     @report = Report.find(params[:report_id])
     authorize @report_question
     if @report_question.update(report_question_params)
-      redirect_to company_report_path(@company, @report)
+      redirect_to action_plan_path(@company, @report)
     else
       render :edit, status: :unprocessable_entity
     end
