@@ -34,6 +34,8 @@
               <% if current_user.inspector? %>
                 <%= link_to 'List a company', new_company_path, class: "dropdown-item" %>
               <% end %>
+              <%= link_to "My Profile", profile_path, class: "dropdown-item" %>
+
             </div>
           </li>
         <% else %>
