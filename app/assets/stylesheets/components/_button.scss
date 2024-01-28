@@ -145,6 +145,27 @@
   text-decoration: none;
 }
 
+.btn-login-2 {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #69ab3e;
+  padding: 16px 50px;
+  // border: 1px solid #000000;
+  border: none;
+  border-radius: 100px;
+  color: azure;
+  text-decoration: none;
+  width: 155px;
+}
+
+.btn-login-2:hover {
+  color: azure;
+  text-decoration: none;
+  background-color: #97ba2f;  /* Different hover color */
+}
+
 .btn-login:hover {
   color: azure;
   text-decoration: none;
